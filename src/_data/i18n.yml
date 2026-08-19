@@ -1,0 +1,9 @@
+nav:
+  home: Início
+  home_url: /
+  sobre: Sobre
+  sobre_url: /sobre/
+  contacto: Contacto
+  contacto_url: /contacto/
+lang_label: Idioma
+feed_title: Feed RSS

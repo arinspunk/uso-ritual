@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} — Uso Ritual</title>
+  <meta name="description" content="{{ description || '' }}">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="alternate" type="application/rss+xml" title="{{ i18n.feed_title }}" href="/{{ lang }}/feed.xml">
+  {{ for alt of (alternates || []) }}
+    <link rel="alternate" hreflang="{{ alt.lang }}" href="{{ alt.url }}">
+  {{ /for }}
+</head>
+<body>
+  {{ include "partials/header.vto" }}
+  <main class="main">
+    {{ content }}
+  </main>
+  {{ include "partials/footer.vto" }}
+</body>
+</html>

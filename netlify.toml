@@ -1,0 +1,9 @@
+[build]
+  command = "deno task build"
+  publish = "_site"
+
+[build.environment]
+  DENO_VERSION = "2.1.0"
+
+# Sem redirects de deteção de idioma por Accept-Language (decisão de design).
+# A seleção de idioma é feita exclusivamente pelo utilizador.

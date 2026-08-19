@@ -1,0 +1,28 @@
+---
+layout: layouts/base.vto
+---
+<div class="home">
+  {{ set posts = search.pages(`lang=${lang} type=post`, "date=desc") }}
+
+  {{ if posts.length }}
+    <ol class="post-list" reversed>
+      {{ for post of posts }}
+        <li class="post-list__item">
+          <article class="post-card">
+            <a class="post-card__link" href="{{ post.url }}">
+              <h2 class="post-card__title">{{ post.title }}</h2>
+            </a>
+            <time class="post-card__date" datetime="{{ post.date |> date('yyyy-MM-dd') }}">
+              {{ post.date |> formatDate(lang) }}
+            </time>
+            {{ if post.description }}
+              <p class="post-card__excerpt">{{ post.description }}</p>
+            {{ /if }}
+          </article>
+        </li>
+      {{ /for }}
+    </ol>
+  {{ else }}
+    <p class="home__empty">—</p>
+  {{ /if }}
+</div>

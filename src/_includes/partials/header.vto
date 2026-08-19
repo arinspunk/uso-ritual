@@ -1,0 +1,21 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="{{ i18n.nav.home_url }}">Uso Ritual</a>
+
+    <nav class="site-nav" aria-label="{{ i18n.nav_label || 'Navegação' }}">
+      <a class="site-nav__link" href="{{ i18n.nav.sobre_url }}">{{ i18n.nav.sobre }}</a>
+      <a class="site-nav__link" href="{{ i18n.nav.contacto_url }}">{{ i18n.nav.contacto }}</a>
+    </nav>
+
+    <div class="lang-switcher" aria-label="{{ i18n.lang_label }}">
+      {{# Idioma ativo — sempre visível #}}
+      <span class="lang-switcher__item lang-switcher__item--active" aria-current="true">{{ lang }}</span>
+      {{# Outros idiomas — só se existe tradução #}}
+      {{ for alt of (alternates || []) }}
+        {{ if alt.lang !== lang }}
+          <a class="lang-switcher__item" href="{{ alt.url }}" lang="{{ alt.lang }}" hreflang="{{ alt.lang }}">{{ alt.lang }}</a>
+        {{ /if }}
+      {{ /for }}
+    </div>
+  </div>
+</header>

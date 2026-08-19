@@ -1,0 +1,329 @@
+/* ─────────────────────────────────────────
+   Uso Ritual — CSS de raiz, sem dependências externas
+   ───────────────────────────────────────── */
+
+/* Variáveis */
+:root {
+  /* Cores */
+  --color-bg:        #fafaf8;
+  --color-text:      #1a1a1a;
+  --color-text-muted:#6b6b6b;
+  --color-accent:    #c8102e;
+  --color-border:    #e4e4e0;
+  --color-surface:   #f2f2ee;
+
+  /* Tipografia */
+  --font-body: Georgia, "Times New Roman", serif;
+  --font-ui:   system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-size-base: 1.0625rem;       /* ~17px */
+  --line-height: 1.7;
+
+  /* Espaçamento */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.75rem;
+  --space-xl:  3rem;
+  --space-2xl: 5rem;
+
+  /* Layout */
+  --max-width: 720px;
+  --gutter:    clamp(1rem, 5vw, 2.5rem);
+}
+
+/* Reset mínimo */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ─── Layout ─── */
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--gutter);
+}
+
+/* ─── Cabeçalho ─── */
+
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-md) var(--gutter);
+}
+
+.site-header__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.site-header__logo {
+  font-family: var(--font-ui);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.site-header__logo:hover {
+  color: var(--color-accent);
+}
+
+.site-nav {
+  display: flex;
+  gap: var(--space-md);
+  flex: 1;
+}
+
+.site-nav__link {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.site-nav__link:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+/* ─── Comutador de idioma ─── */
+
+.lang-switcher {
+  display: flex;
+  gap: var(--space-xs);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+.lang-switcher__item {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.lang-switcher__item--active {
+  color: var(--color-text);
+  font-weight: 600;
+  cursor: default;
+}
+
+.lang-switcher__item:not(.lang-switcher__item--active):hover {
+  color: var(--color-accent);
+}
+
+.lang-switcher__item + .lang-switcher__item::before {
+  content: "·";
+  margin-right: var(--space-xs);
+  color: var(--color-border);
+}
+
+/* ─── Rodapé ─── */
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-lg) var(--gutter);
+  margin-top: auto;
+}
+
+.site-footer__inner {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+}
+
+.site-footer__inner a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.site-footer__inner a:hover {
+  color: var(--color-text);
+}
+
+/* ─── Lista de posts (home) ─── */
+
+.post-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.post-card__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-card__title {
+  font-size: 1.25rem;
+  font-weight: normal;
+  line-height: 1.3;
+  margin-bottom: var(--space-xs);
+}
+
+.post-card__link:hover .post-card__title {
+  color: var(--color-accent);
+}
+
+.post-card__date {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.post-card__excerpt {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* ─── Post ─── */
+
+.post__header {
+  margin-bottom: var(--space-xl);
+}
+
+.post__title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: normal;
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+}
+
+.post__date {
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.post__content {
+  max-width: 65ch;
+}
+
+.post__content p {
+  margin-bottom: var(--space-md);
+}
+
+.post__content h2 {
+  font-size: 1.25rem;
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.post__content h3 {
+  font-size: 1.0625rem;
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.post__content blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--space-md);
+  color: var(--color-text-muted);
+  margin: var(--space-lg) 0;
+}
+
+.post__content a {
+  color: var(--color-accent);
+}
+
+.post__translations {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ─── Páginas estáticas ─── */
+
+.page__title {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: var(--space-xl);
+}
+
+.page__content p {
+  margin-bottom: var(--space-md);
+  max-width: 65ch;
+}
+
+.page__content a {
+  color: var(--color-accent);
+}
+
+/* ─── Responsivo ─── */
+
+@media (max-width: 640px) {
+  .site-header__inner {
+    gap: var(--space-sm);
+  }
+
+  .site-nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .lang-switcher {
+    margin-left: 0;
+  }
+
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
