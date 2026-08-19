@@ -7,8 +7,19 @@ layout: layouts/base.vto
   {{ if posts.length }}
     <ol class="post-list" reversed>
       {{ for post of posts }}
+        {{ set directImage = post.media?.find(i => i.type === "image") }}
+        {{ set galleryImage = post.media?.find(i => i.type === "gallery")?.items?.[0] }}
+        {{ set thumbSrc = directImage?.src || galleryImage?.src || null }}
         <li class="post-list__item">
-          <article class="post-card">
+          <article class="post-card{{ thumbSrc ? " post-card--with-thumb" : "" }}">
+            {{ if thumbSrc }}
+              <img
+                class="post-card__thumbnail"
+                src="/assets/images/{{ thumbSrc }}"
+                alt=""
+                loading="lazy"
+              >
+            {{ /if }}
             <a class="post-card__link" href="{{ post.url }}">
               <h2 class="post-card__title">{{ post.title }}</h2>
             </a>

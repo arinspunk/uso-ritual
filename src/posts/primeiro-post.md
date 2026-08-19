@@ -4,6 +4,28 @@ date: 2025-08-18
 slug: bem-vindo
 description: O blogue começa aqui.
 translationKey: welcome-post
+media:
+  - type: image
+    src: welcome-post/cover.svg
+    alt: Capa do disco
+    caption: Editado em Lisboa, 2025
+  - type: quote
+    text: Sem métrica, sem algoritmo. Só música que vale a pena escutar.
+    attribution: Uso Ritual
+  - type: video
+    src: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    caption: Gravado ao vivo em Lisboa
+  - type: gallery
+    items:
+      - src: welcome-post/estudio-1.svg
+        alt: Sessão de estúdio 1
+        caption: Sessão de manhã
+      - src: welcome-post/estudio-2.svg
+        alt: Sessão de estúdio 2
+        caption: A tarde
+      - src: welcome-post/estudio-3.svg
+        alt: Sessão de estúdio 3
+        caption: Final de noite
 ---
 
 Este é o primeiro post do **Uso Ritual**.

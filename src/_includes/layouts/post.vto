@@ -9,8 +9,18 @@ layout: layouts/base.vto
     </time>
   </header>
 
-  <div class="post__content">
-    {{ content }}
+  <div class="post__body{{ media && media.length ? " post__body--with-media" : "" }}">
+    <div class="post__content">
+      {{ content }}
+    </div>
+
+    {{ if media && media.length }}
+      <aside class="post__media">
+        {{ for item of media }}
+          {{ include "partials/media-item.vto" { item } }}
+        {{ /for }}
+      </aside>
+    {{ /if }}
   </div>
 
   {{ if alternates && alternates.length > 1 }}

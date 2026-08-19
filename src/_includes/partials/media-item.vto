@@ -1,0 +1,78 @@
+{{ if item.type === "image" }}
+  <figure class="media-item media-item--image">
+    <img src="/assets/images/{{ item.src }}" alt="{{ item.alt || "" }}" loading="lazy">
+    {{ if item.caption }}<figcaption class="media-item__caption">{{ item.caption }}</figcaption>{{ /if }}
+  </figure>
+
+{{ else if item.type === "video" }}
+  {{ set isYoutube = item.src.includes("youtu.be/") || item.src.includes("youtube.com/") }}
+  {{ set isBandcamp = item.src.includes("bandcamp.com") }}
+  {{ if isYoutube }}
+    {{ set videoId = item.src.includes("youtu.be/")
+      ? item.src.split("youtu.be/")[1].split("?")[0]
+      : item.src.split("v=")[1]?.split("&")[0] ?? "" }}
+    <figure class="media-item media-item--video">
+      <div class="media-item__embed">
+        <iframe
+          src="https://www.youtube.com/embed/{{ videoId }}"
+          title="{{ item.caption || "Vídeo" }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      {{ if item.caption }}<figcaption class="media-item__caption">{{ item.caption }}</figcaption>{{ /if }}
+    </figure>
+  {{ else if isBandcamp }}
+    <figure class="media-item media-item--video">
+      <div class="media-item__embed">
+        <iframe
+          src="{{ item.src }}"
+          title="{{ item.caption || "Áudio/Vídeo" }}"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      {{ if item.caption }}<figcaption class="media-item__caption">{{ item.caption }}</figcaption>{{ /if }}
+    </figure>
+  {{ else }}
+    <a class="media-item media-item--link" href="{{ item.src }}" target="_blank" rel="noopener noreferrer">
+      {{ item.caption || item.src }}
+    </a>
+  {{ /if }}
+
+{{ else if item.type === "audio" }}
+  {{ set isSoundcloud = item.src.includes("soundcloud.com") }}
+  {{ if isSoundcloud }}
+    <div class="media-item media-item--audio">
+      <iframe
+        src="{{ item.src }}"
+        title="{{ item.caption || "Áudio" }}"
+        frameborder="0"
+        allow="autoplay"
+        scrolling="no"
+      ></iframe>
+    </div>
+  {{ else }}
+    <a class="media-item media-item--link" href="{{ item.src }}" target="_blank" rel="noopener noreferrer">
+      {{ item.caption || item.src }}
+    </a>
+  {{ /if }}
+
+{{ else if item.type === "quote" }}
+  <blockquote class="media-item media-item--quote">
+    <p>{{ item.text }}</p>
+    {{ if item.attribution }}<cite>{{ item.attribution }}</cite>{{ /if }}
+  </blockquote>
+
+{{ else if item.type === "gallery" }}
+  <div class="media-item media-item--gallery gallery">
+    {{ for galleryItem of item.items }}
+      <figure class="gallery__item">
+        <img src="/assets/images/{{ galleryItem.src }}" alt="{{ galleryItem.alt || "" }}" loading="lazy">
+        {{ if galleryItem.caption }}<figcaption class="media-item__caption">{{ galleryItem.caption }}</figcaption>{{ /if }}
+      </figure>
+    {{ /for }}
+  </div>
+
+{{ /if }}

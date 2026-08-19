@@ -2,6 +2,7 @@ import lume from "lume/mod.ts";
 import multilanguage from "lume/plugins/multilanguage.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
+import transformImages from "lume/plugins/transform_images.ts";
 
 const site = lume({
   src: "./src",
@@ -74,6 +75,8 @@ site.filter("formatDate", (value: Date, lang: string) => {
   }).format(value);
 });
 
-site.copy("assets");
+site.copy("assets/css");
+site.loadAssets([".svg"]);
+site.use(transformImages());
 
 export default site;
