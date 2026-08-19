@@ -47,12 +47,12 @@
 
 - [x] 7.1 Criar `netlify.toml` na raiz com `[build] command = "deno task build"`, `publish = "_site"`, e versão de Deno declarada (via `[build.environment] DENO_VERSION = "..."`)
 - [x] 7.2 Confirmar que não existem redirects de deteção de idioma (`Accept-Language`) no `netlify.toml`
-- [ ] 7.3 Ligar o repositório ao Netlify e fazer o primeiro deploy
-- [ ] 7.4 Verificar que o site está acessível em produção: `/`, `/en/`, posts PT e EN, Sobre/About, Contacto/Contact, e feeds RSS
+- [x] 7.3 Ligar o repositório ao Netlify e fazer o primeiro deploy
+- [x] 7.4 Verificar que o site está acessível em produção: `/`, `/en/`, posts PT e EN, Sobre/About, Contacto/Contact, e feeds RSS
 
 ## 8. Conteúdo inicial e validação final
 
 - [x] 8.1 Criar 1-2 posts reais em PT para validar o fluxo editorial completo
 - [x] 8.2 Criar versão EN de pelo menos um post (com `translationKey`) e validar o comutador de idioma
-- [ ] 8.3 Testar responsividade em mobile (320px) e desktop
+- [x] 8.3 Testar responsividade em mobile (320px) e desktop
 - [x] 8.4 Confirmar que nenhum recurso externo (CSS, fontes) é carregado em runtime
