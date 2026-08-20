@@ -47,3 +47,14 @@ O sistema SHALL gerar o URL de cada post como `/<slug>` para PT e `/<lang>/<slug
 #### Scenario: Post EN com slug usa prefixo /en/
 - **WHEN** um post tem `lang: en` e `slug: new-porto-record`
 - **THEN** o URL gerado é `/en/new-porto-record/`
+
+### Requirement: Campo media opcional no frontmatter de um post
+Um post PODE declarar o campo `media` (lista de itens multimedia) no frontmatter; a sua ausência não impede a publicação nem altera o comportamento dos restantes campos obrigatórios.
+
+#### Scenario: Post com media é publicado normalmente
+- **WHEN** um post tem `title`, `date`, `lang`, `slug` e `media` válido no frontmatter
+- **THEN** o sistema gera a página do post sem erros, renderizando a coluna de media
+
+#### Scenario: Post sem media é publicado sem alterações
+- **WHEN** um post não declara o campo `media`
+- **THEN** o sistema gera a página do post com layout de coluna única, sem erros

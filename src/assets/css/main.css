@@ -15,7 +15,9 @@
   /* Tipografia */
   --font-body: Georgia, "Times New Roman", serif;
   --font-ui:   system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-size-base: 1.0625rem;       /* ~17px */
+  --font-size-base: 1rem;            /* 16px mobile */
+  --font-size-h1:      calc(1rem * 1.3125); /* 21px at 16px base — traditional scale */
+  --font-size-caption: 0.875rem;           /* 14px at 16px base — traditional scale */
   --line-height: 1.7;
 
   /* Espaçamento */
@@ -31,6 +33,11 @@
   --gutter:    clamp(1rem, 5vw, 2.5rem);
 }
 
+@media (min-width: 768px)  { :root { --font-size-base: 1.0625rem; } } /* 17px */
+@media (min-width: 1024px) { :root { --font-size-base: 1.125rem;  } } /* 18px */
+@media (min-width: 1280px) { :root { --font-size-base: 1.1875rem; } } /* 19px */
+@media (min-width: 1440px) { :root { --font-size-base: 1.25rem;   } } /* 20px */
+
 /* Reset mínimo */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -39,6 +46,7 @@
 }
 
 html {
+  font-size: var(--font-size-base);
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
@@ -47,7 +55,7 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
-  font-size: var(--font-size-base);
+  font-size: 1rem;
   line-height: var(--line-height);
   min-height: 100dvh;
   display: flex;
@@ -88,7 +96,6 @@ a:hover {
 }
 
 .site-header__inner {
-  max-width: var(--max-width);
   margin-inline: auto;
   display: flex;
   align-items: center;
@@ -237,8 +244,9 @@ a:hover {
 }
 
 .post__title {
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: normal;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-h1);
+  font-weight: 400;
   line-height: 1.2;
   margin-bottom: var(--space-sm);
 }
@@ -250,7 +258,10 @@ a:hover {
 }
 
 .post__content {
-  max-width: 65ch;
+  max-width: 48ch;
+  width: 100%;
+  text-align: left;
+  hyphens: none;
 }
 
 .post__content p {
@@ -258,13 +269,20 @@ a:hover {
 }
 
 .post__content h2 {
-  font-size: 1.25rem;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
   margin-top: var(--space-xl);
   margin-bottom: var(--space-sm);
 }
 
 .post__content h3 {
-  font-size: 1.0625rem;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
   margin-top: var(--space-lg);
   margin-bottom: var(--space-sm);
 }
@@ -297,9 +315,15 @@ a:hover {
   margin-bottom: var(--space-xl);
 }
 
+.page__content {
+  max-width: 48ch;
+  width: 100%;
+  text-align: left;
+  hyphens: none;
+}
+
 .page__content p {
   margin-bottom: var(--space-md);
-  max-width: 65ch;
 }
 
 .page__content a {
@@ -312,16 +336,46 @@ a:hover {
   display: contents;
 }
 
-.post__body--with-media {
-  display: grid;
-  grid-template-columns: 1fr minmax(260px, 320px);
-  gap: var(--space-xl);
-  align-items: start;
-  max-width: 1080px;
+/* Título alineado con la columna de texto */
+.post__header {
+  max-width: 48ch;
+  width: 100%;
 }
 
-.post__body--with-media .post__content {
-  max-width: none;
+/* Default: stacked */
+.post__body--with-media {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* Dos columnas solo cuando el viewport lo permite */
+@media (min-width: 1100px) {
+  .main:has(.post__body--with-media) {
+    max-width: none;
+  }
+
+  .post__body--with-media {
+    display: grid;
+    grid-template-columns: 32ch 48ch;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* Media col 1, texto col 2 — HTML tiene texto primero */
+  .post__body--with-media .post__content { grid-column: 2; }
+  .post__body--with-media .post__media   { grid-column: 1; grid-row: 1; }
+
+  /* Centra el artículo en el main expandido */
+  article.post:has(.post__body--with-media) {
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  /* Título alineado con la columna de texto (col 2) */
+  article.post:has(.post__body--with-media) .post__header {
+    margin-left: calc(32ch + 1.5rem);
+  }
 }
 
 /* ─── Coluna de media ─── */
@@ -330,6 +384,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
+  align-items: flex-end;
 }
 
 .media-item--image img,
@@ -341,11 +396,11 @@ a:hover {
 
 .media-item__caption {
   display: block;
-  font-family: var(--font-ui);
-  font-size: 0.8125rem;
+  font-family: var(--font-body);
+  font-size: var(--font-size-caption);
   color: var(--color-text-muted);
   margin-top: var(--space-xs);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .media-item--embed,
@@ -454,10 +509,6 @@ a:hover {
   .site-footer__inner {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .post__body--with-media {
-    grid-template-columns: 1fr;
   }
 
   .gallery {
