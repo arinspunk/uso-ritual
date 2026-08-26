@@ -11,7 +11,7 @@ Este é o primeiro post do Uso Ritual.
 
 Aqui vais encontrar críticas de discos, entrevistas e notas soltas sobre música — principalmente em português, às vezes em inglês, eventualmente em euskera.
 
-{{ "welcome-post/cover.svg" |> postImage("Capa do disco", "Editado em Lisboa, 2025") }}
+{{ "welcome-post/fillas.jpg" |> postImage("Capa do disco", "Editado em Lisboa, 2025", "full") }}
 
 Sem métrica, sem algoritmo. Só música que vale a pena escutar.
 
@@ -21,15 +21,11 @@ Sem métrica, sem algoritmo. Só música que vale a pena escutar.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id porta risus. Curabitur scelerisque eleifend nisi, euismod convallis nibh viverra at. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi vestibulum finibus metus. Curabitur consectetur nisi vitae nisi iaculis accumsan tincidunt a sem. Nunc ut neque nec libero dictum efficitur sit amet ac diam. Nunc ullamcorper tincidunt pulvinar. Vivamus vehicula tincidunt nisl sit amet ullamcorper. Nulla ut maximus felis, vitae aliquet magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer accumsan arcu sed massa semper bibendum.
 
-{{ "https://www.youtube.com/watch?v=dQw4w9WgXcQ" |> postVideo("Gravado ao vivo em Lisboa", "full") }}
-
-### Agora um cabeçalho h3
+{{ "https://www.youtube.com/watch?v=dcYK489E7a8" |> postVideo("Gravado ao vivo em Lisboa") }}
 
 Vestibulum viverra tortor urna, sed consectetur nibh vehicula sed. Nunc et elit condimentum, molestie tortor id, dignissim turpis. Quisque id sapien odio. Sed non iaculis massa. Suspendisse potenti. Proin posuere volutpat bibendum. Mauris blandit velit vel ante accumsan rhoncus. Nunc imperdiet, ipsum non faucibus pretium, libero ligula pretium mauris, eu tempor dolor leo et neque. Sed non tempor lectus, non pharetra neque. Aliquam imperdiet elit justo, et efficitur metus interdum eget. Integer hendrerit porta eros, sed efficitur eros volutpat id. Donec id egestas orci, vitae consectetur purus.
 
-{{ "welcome-post/estudio-1.svg|Sessão de estúdio 1|Sessão de manhã" |> postGallery("welcome-post/estudio-2.svg|Sessão de estúdio 2|A tarde", "welcome-post/estudio-3.svg|Sessão de estúdio 3|Final de noite") }}
-
-### Mais outro h3
+{{ "welcome-post/a-pedreira.jpg|Sessão de estúdio 1|Sessão de manhã" |> postGallery("welcome-post/Antia-Muino-Abe-Rabade.jpg|Sessão de estúdio 2|A tarde", "welcome-post/lontreira.jpg|Sessão de estúdio 3|Final de noite") }}
 
 Donec et interdum felis. Curabitur at varius lorem. Sed sagittis ipsum vel libero mattis, quis dapibus arcu vehicula. Morbi ac turpis condimentum, volutpat mauris sed, feugiat erat. Suspendisse ut tincidunt erat. Sed nunc nulla, rutrum faucibus elit mattis, tempor sagittis lacus. Praesent suscipit rutrum turpis eget pulvinar.
 

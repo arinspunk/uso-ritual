@@ -123,6 +123,42 @@ body {
   flex-direction: column;
 }
 
+h2, h3 {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: var(--line-height);
+  margin-bottom: var(--baseline);
+}
+
+h3 {
+  font-style: italic;
+}
+
+p {
+  margin-bottom: var(--baseline);
+}
+
+blockquote {
+  border-left: 3px solid var(--wada-blue);
+  padding-left: var(--space-md);
+  margin-bottom: var(--baseline);
+}
+
+blockquote p {
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+blockquote cite {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-caption);
+  font-style: normal;
+  margin-top: var(--space-xs);
+}
+
 img, video {
   max-width: 100%;
   width: 100%;
@@ -147,7 +183,7 @@ a:hover {
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding: var(--space-xl) var(--gutter);
+  padding: calc(var(--baseline) * 3) var(--gutter);
 }
 
 /* Posts need a wider shell so the breakout grid can reach ~72ch wide / full bleed */
@@ -176,14 +212,9 @@ a:hover {
 
 .site-header__logo {
   font-family: var(--font-ui);
-  text-transform: uppercase;
   color: var(--color-text);
   text-decoration: none;
   flex-shrink: 0;
-}
-
-.site-header__logo:hover {
-  color: var(--cy-0);
 }
 
 .site-nav {
@@ -216,7 +247,6 @@ a:hover {
 }
 
 .lang-switcher__item {
-  
   text-decoration: none;
 }
 
@@ -257,7 +287,6 @@ a:hover {
 }
 
 .site-footer__inner a {
-  
   text-decoration: none;
 }
 
@@ -309,12 +338,20 @@ a:hover {
   margin: 0 auto calc(var(--baseline) * 2);
 }
 
+.post__header--center {
+  text-align: center;
+}
+
 .post__title {
   font-family: var(--font-ui);
   font-size: var(--font-size-h1);
   font-weight: 400;
   line-height: var(--line-height-h1);
   margin-bottom: 0;
+}
+
+.post__subtitle {
+  margin-top: var(--baseline);
 }
 
 .post__date {
@@ -339,63 +376,20 @@ a:hover {
   grid-column: text-start / text-end;
 }
 
-.post__content > .post-media--wide {
+.post-media {
+  margin: var(--baseline) 0 calc(var(--baseline) * 2);
+}
+
+.post-media--wide {
   grid-column: wide-start / wide-end;
-  margin-bottom: var(--baseline);
 }
 
-.post__content > .post-media--full {
+.post-media--full {
   grid-column: full-start / full-end;
-  margin-bottom: var(--baseline);
 }
 
-.post__content > .post-media--text {
+.post-media--text {
   grid-column: text-start / text-end;
-  margin-bottom: var(--baseline);
-}
-
-.post__content p {
-  margin-bottom: var(--baseline);
-}
-
-.post__content h2 {
-  font-family: var(--font-ui);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: var(--line-height);
-  margin-bottom: var(--baseline);
-}
-
-.post__content h3 {
-  font-family: var(--font-ui);
-  font-size: 1rem;
-  font-weight: 400;
-  font-style: italic;
-  line-height: var(--line-height);
-  margin-bottom: var(--baseline);
-}
-
-.post__content blockquote,
-.post-quote {
-  border-left: 3px solid var(--wada-blue);
-  padding-left: var(--space-md);
-  margin-bottom: var(--baseline);
-}
-
-.post__content blockquote p,
-.post-quote p {
-  font-style: italic;
-  line-height: 1.5;
-  margin-bottom: 0;
-}
-
-.post__content blockquote cite,
-.post-quote cite {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: var(--font-size-caption);
-  font-style: normal;
-  margin-top: var(--space-xs);
 }
 
 .post__content a {
@@ -424,14 +418,6 @@ a:hover {
   hyphens: none;
 }
 
-.page__content p {
-  margin-bottom: 1em;
-}
-
-.page__content a {
-  color: inherit;
-}
-
 /* ─── Shortcodes de media en posts ─── */
 
 .post-media--wide figure,
@@ -457,9 +443,10 @@ a:hover {
 .post-media__caption {
   display: block;
   font-family: var(--font-body);
-  font-size: var(--font-size-caption);
-  margin-top: var(--space-xs);
+  font-size: var(--font-size-small);
+  margin-top: var(--space-sm);
   line-height: 1.5;
+  text-align: right;
 }
 
 .post-media--audio iframe {

@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
-  <rect width="400" height="400" fill="#2a2a2a"/>
-  <rect x="40" y="60" width="140" height="280" rx="4" fill="#3a3a3a"/>
-  <rect x="220" y="60" width="140" height="280" rx="4" fill="#444"/>
-  <text x="200" y="360" font-family="sans-serif" font-size="14" fill="#6b6b6b" text-anchor="middle">Estúdio 2 — placeholder</text>
-</svg>

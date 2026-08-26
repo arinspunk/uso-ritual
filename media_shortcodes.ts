@@ -158,5 +158,5 @@ export function renderPostQuote(text: string, attribution?: string): string {
   const cite = attribution
     ? `\n  <cite>${escapeHtml(attribution)}</cite>`
     : "";
-  return `<blockquote class="post-quote">\n  <p>${escapeHtml(text)}</p>${cite}\n</blockquote>`;
+  return `<blockquote>\n  <p>${escapeHtml(text)}</p>${cite}\n</blockquote>`;
 }
