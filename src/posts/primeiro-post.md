@@ -1,46 +1,33 @@
 ---
-title: Bem-vindo ao Uso Ritual
+title: Bem-vindo ao Uso Ritual, um titulo bem grande a duas linhas
 date: 2025-08-18
 slug: bem-vindo
 description: O blogue começa aqui.
 translationKey: welcome-post
-media:
-  - type: image
-    src: welcome-post/cover.svg
-    alt: Capa do disco
-    caption: Editado em Lisboa, 2025
-  - type: quote
-    text: Sem métrica, sem algoritmo. Só música que vale a pena escutar.
-    attribution: Uso Ritual
-  - type: video
-    src: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-    caption: Gravado ao vivo em Lisboa
-  - type: gallery
-    items:
-      - src: welcome-post/estudio-1.svg
-        alt: Sessão de estúdio 1
-        caption: Sessão de manhã
-      - src: welcome-post/estudio-2.svg
-        alt: Sessão de estúdio 2
-        caption: A tarde
-      - src: welcome-post/estudio-3.svg
-        alt: Sessão de estúdio 3
-        caption: Final de noite
+thumbnail: welcome-post/cover.svg
 ---
 
 Este é o primeiro post do Uso Ritual.
 
 Aqui vais encontrar críticas de discos, entrevistas e notas soltas sobre música — principalmente em português, às vezes em inglês, eventualmente em euskera.
 
+{{ "welcome-post/cover.svg" |> postImage("Capa do disco", "Editado em Lisboa, 2025") }}
+
 Sem métrica, sem algoritmo. Só música que vale a pena escutar.
+
+{{ "Sem métrica, sem algoritmo. Só música que vale a pena escutar." |> postQuote("Uso Ritual") }}
 
 ## Um cabeçalho h2
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id porta risus. Curabitur scelerisque eleifend nisi, euismod convallis nibh viverra at. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi vestibulum finibus metus. Curabitur consectetur nisi vitae nisi iaculis accumsan tincidunt a sem. Nunc ut neque nec libero dictum efficitur sit amet ac diam. Nunc ullamcorper tincidunt pulvinar. Vivamus vehicula tincidunt nisl sit amet ullamcorper. Nulla ut maximus felis, vitae aliquet magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer accumsan arcu sed massa semper bibendum.
 
+{{ "https://www.youtube.com/watch?v=dQw4w9WgXcQ" |> postVideo("Gravado ao vivo em Lisboa", "full") }}
+
 ### Agora um cabeçalho h3
 
 Vestibulum viverra tortor urna, sed consectetur nibh vehicula sed. Nunc et elit condimentum, molestie tortor id, dignissim turpis. Quisque id sapien odio. Sed non iaculis massa. Suspendisse potenti. Proin posuere volutpat bibendum. Mauris blandit velit vel ante accumsan rhoncus. Nunc imperdiet, ipsum non faucibus pretium, libero ligula pretium mauris, eu tempor dolor leo et neque. Sed non tempor lectus, non pharetra neque. Aliquam imperdiet elit justo, et efficitur metus interdum eget. Integer hendrerit porta eros, sed efficitur eros volutpat id. Donec id egestas orci, vitae consectetur purus.
+
+{{ "welcome-post/estudio-1.svg|Sessão de estúdio 1|Sessão de manhã" |> postGallery("welcome-post/estudio-2.svg|Sessão de estúdio 2|A tarde", "welcome-post/estudio-3.svg|Sessão de estúdio 3|Final de noite") }}
 
 ### Mais outro h3
 

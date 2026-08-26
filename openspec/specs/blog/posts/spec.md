@@ -48,13 +48,13 @@ O sistema SHALL gerar o URL de cada post como `/<slug>` para PT e `/<lang>/<slug
 - **WHEN** um post tem `lang: en` e `slug: new-porto-record`
 - **THEN** o URL gerado é `/en/new-porto-record/`
 
-### Requirement: Campo media opcional no frontmatter de um post
-Um post PODE declarar o campo `media` (lista de itens multimedia) no frontmatter; a sua ausência não impede a publicação nem altera o comportamento dos restantes campos obrigatórios.
+### Requirement: Campo thumbnail opcional en el frontmatter de un post
+Un post PODE declarar el campo `thumbnail` (string, path relativo a `src/assets/images/`) en el frontmatter para indicar qué imagen se usa como miniatura en la card de la listagem. Cuando `thumbnail` está presente, el sistema SHALL usar esa imagen en el cartão. Cuando no está presente, el cartão se renderiza sin miniatura.
 
-#### Scenario: Post com media é publicado normalmente
-- **WHEN** um post tem `title`, `date`, `lang`, `slug` e `media` válido no frontmatter
-- **THEN** o sistema gera a página do post sem erros, renderizando a coluna de media
+#### Scenario: Post con thumbnail aparece con miniatura en la listagem
+- **WHEN** un post declara `thumbnail: disco/cover.jpg` en el frontmatter
+- **THEN** el cartão del post en la listagem muestra esa imagen como miniatura
 
-#### Scenario: Post sem media é publicado sem alterações
-- **WHEN** um post não declara o campo `media`
-- **THEN** o sistema gera a página do post com layout de coluna única, sem erros
+#### Scenario: Post sin thumbnail aparece sin miniatura en la listagem
+- **WHEN** un post no declara el campo `thumbnail`
+- **THEN** el cartão del post en la listagem no muestra miniatura, sin error

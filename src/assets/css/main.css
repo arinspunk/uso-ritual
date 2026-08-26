@@ -71,9 +71,10 @@
   --font-body: 'Novela', Georgia, serif;
   --font-ui:   'Isaac', system-ui, sans-serif;
   --font-ui-features: "ss01";
-  --font-size-base: 1rem;            /* 16px mobile */
+  --font-size-base: 1rem; /* 16px mobile */
   --font-size-h1: calc(1rem * 1.3125); /* 21px at 16px base — traditional scale */
-  --font-size-caption: 0.875rem;           /* 14px at 16px base — traditional scale */
+  --font-size-caption: 0.875rem; /* 14px at 16px base — traditional scale */
+  --font-size-small: 0.75rem; /* 12px at 16px base — traditional scale */
   --line-height: 1.5;
   --baseline: calc(var(--line-height) * 1em);
 
@@ -122,6 +123,7 @@ body {
 
 img, video {
   max-width: 100%;
+  width: 100%;
   height: auto;
   display: block;
 }
@@ -144,6 +146,11 @@ a:hover {
   max-width: var(--max-width);
   margin-inline: auto;
   padding: var(--space-xl) var(--gutter);
+}
+
+/* Posts need a wider shell so the breakout grid can reach ~72ch wide / full bleed */
+.main:has(.post) {
+  max-width: none;
 }
 
 /* ─── Cabeçalho ─── */
@@ -295,7 +302,9 @@ a:hover {
 /* ─── Post ─── */
 
 .post__header {
-  margin-bottom: var(--baseline);
+  max-width: 48ch;
+  width: 100%;
+  margin: 0 auto var(--baseline);
 }
 
 .post__title {
@@ -307,15 +316,40 @@ a:hover {
 }
 
 .post__date {
-  font-family: var(--font-ui);
-  font-size: var(--font-size-caption);
+  font-size: var(--font-size-small);
 }
 
 .post__content {
-  max-width: 48ch;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(0, 1fr)
+    [wide-start] minmax(0, 12ch)
+    [text-start] min(48ch, 100%)
+    [text-end]   minmax(0, 12ch)
+    [wide-end]   1fr
+    [full-end];
   width: 100%;
   text-align: left;
   hyphens: none;
+}
+
+.post__content > * {
+  grid-column: text-start / text-end;
+}
+
+.post__content > .post-media--wide {
+  grid-column: wide-start / wide-end;
+  margin-bottom: var(--baseline);
+}
+
+.post__content > .post-media--full {
+  grid-column: full-start / full-end;
+  margin-bottom: var(--baseline);
+}
+
+.post__content > .post-media--text {
+  grid-column: text-start / text-end;
+  margin-bottom: var(--baseline);
 }
 
 .post__content p {
@@ -339,10 +373,27 @@ a:hover {
   margin-bottom: var(--baseline);
 }
 
-.post__content blockquote {
-  border-left: 3px solid var(--color-accent);
+.post__content blockquote,
+.post-quote {
+  border-left: 3px solid var(--wada-blue);
   padding-left: var(--space-md);
   margin-bottom: var(--baseline);
+}
+
+.post__content blockquote p,
+.post-quote p {
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.post__content blockquote cite,
+.post-quote cite {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: var(--font-size-caption);
+  font-style: normal;
+  margin-top: var(--space-xs);
 }
 
 .post__content a {
@@ -379,147 +430,69 @@ a:hover {
   color: inherit;
 }
 
-/* ─── Post: corpo de duas colunas ─── */
+/* ─── Shortcodes de media en posts ─── */
 
-.post__body {
-  display: contents;
-}
-
-/* Título alineado con la columna de texto */
-.post__header {
-  max-width: 48ch;
+.post-media--wide figure,
+.post-media--full figure {
   width: 100%;
+  margin: 0;
 }
 
-/* Default: stacked */
-.post__body--with-media {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
-}
-
-/* Dos columnas solo cuando el viewport lo permite */
-@media (min-width: 1100px) {
-  .main:has(.post__body--with-media) {
-    max-width: none;
-  }
-
-  .post__body--with-media {
-    display: grid;
-    grid-template-columns: 32ch 48ch;
-    gap: 1.5rem;
-    align-items: start;
-  }
-
-  /* Media col 1, texto col 2 — HTML tiene texto primero */
-  .post__body--with-media .post__content { grid-column: 2; }
-  .post__body--with-media .post__media   { grid-column: 1; grid-row: 1; }
-
-  /* Centra el artículo en el main expandido */
-  article.post:has(.post__body--with-media) {
-    width: fit-content;
-    margin-inline: auto;
-  }
-
-  /* Título alineado con la columna de texto (col 2) */
-  article.post:has(.post__body--with-media) .post__header {
-    margin-left: calc(32ch + 1.5rem);
-  }
-}
-
-/* ─── Coluna de media ─── */
-
-.post__media {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  align-items: flex-end;
-}
-
-.media-item--image img,
-.media-item--gallery .gallery__item img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.media-item__caption {
-  display: block;
-  font-family: var(--font-body);
-  font-size: var(--font-size-caption);
-  
-  margin-top: var(--space-xs);
-  line-height: 1.5;
-}
-
-.media-item--embed,
-.media-item--video,
-.media-item--audio {
-  width: 100%;
-}
-
-.media-item__embed {
+.media-embed {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
   overflow: hidden;
 }
 
-.media-item__embed iframe {
+.media-embed iframe {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
 
-.media-item--audio iframe {
+.post-media__caption {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--font-size-caption);
+  margin-top: var(--space-xs);
+  line-height: 1.5;
+}
+
+.post-media--audio iframe {
   width: 100%;
   height: 166px;
   border: none;
 }
 
-.media-item--quote {
-  border-left: 3px solid var(--color-accent);
-  padding-left: var(--space-md);
-  margin: 0;
+.post-media--spotify iframe {
+  height: 80px;
 }
 
-.media-item--quote p {
-  color: var(--color-text);
-  font-style: italic;
-  line-height: 1.5;
-}
-
-.media-item--quote cite {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 0.8125rem;
-  
-  font-style: normal;
-  margin-top: var(--space-xs);
-}
-
-.media-item--link {
+.post-media--link {
   font-family: var(--font-ui);
 }
 
-/* ─── Gallery ─── */
+/* ─── Gallery shortcode ─── */
 
-.gallery {
+.post-gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-sm);
 }
 
-.gallery__item {
+.post-gallery__item {
   margin: 0;
 }
 
-.gallery__item img {
+.post-gallery__item img {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
 }
+
+/* ─── Quote shortcode (styles unified with .post__content blockquote above) ─── */
 
 /* ─── Thumbnail na home ─── */
 

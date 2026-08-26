@@ -6,7 +6,7 @@ Ver `proposal.md` para la motivación. El sistema actual tiene la media en un ar
 
 **Goals:**
 - Columna única centrada, texto a 48ch, media intercalada con breakout CSS grid
-- Cinco shortcodes (`postImage`, `postVideo`, `postAudio`, `postGallery`, `postQuote`) registrados en `_config.ts`
+- Cinco shortcodes (`postImage`, `postVideo`, `postAudio`, `postGallery`, `postQuote`) registrados en `_config.ts` vía `site.filter()`
 - Campo `thumbnail` en frontmatter para la card de la home
 - Migración del post `primeiro-post.md` como referencia
 
@@ -41,25 +41,39 @@ Ver `proposal.md` para la motivación. El sistema actual tiene la media en un ar
 
 **Por qué `minmax(0, 12ch)` para los márgenes del wide:** Permite que el wide crezca hasta 72ch (48+12+12) en pantallas grandes, pero se colapsa a 0 en viewports estrechos sin overflow.
 
-### 2. Shortcodes como `site.helper()` de Lume
+### 2. Shortcodes como `site.filter()` de Lume (sintaxis pipeline)
 
-**Decisión:** Registrar cada shortcode con `site.helper("postImage", fn, { type: "tag" })` en `_config.ts`. Lume procesa el Vento antes del markdown, por lo que los shortcodes son accesibles desde el cuerpo `.md`.
+**Decisión:** Registrar cada shortcode con `site.filter("postImage", fn)` en `_config.ts` (no `type: "tag"`). Lume procesa Vento antes del markdown, por lo que los shortcodes son accesibles desde el cuerpo `.md`.
 
-**Alternativa descartada — componentes Vento (`_components/`):** Requieren sintaxis `{{ comp.postImage() }}` en lugar de `{{ postImage }}`. Los helpers con `type: "tag"` son más ergonómicos para autores de posts.
+**Sintaxis de autor bloqueada (compromiso runtime):** Vento/Lume no parsea tags multi-argumento del estilo `{{ postImage "a" "b" }}` (meriyah `Expected ')'`) ni llamadas directas `{{ postImage(...) }}` (`it.postImage is not a function`). La forma que funciona es el pipe con el primer argumento a la izquierda y el resto posicionales:
+
+```
+{{ "src" |> postImage("alt", "caption?", "wide|full|text?") }}
+{{ "url" |> postVideo("caption?", "wide|full|text?") }}
+{{ "url" |> postAudio("caption?") }}
+{{ "src|alt|cap" |> postGallery("src|alt|cap", ...) }}
+{{ "texto" |> postQuote("atribución?") }}
+```
+
+Tamaño por defecto de media: `wide`. Valores explícitos: `wide` | `full` | `text`.
+
+**Alternativa descartada — `type: "tag"` con args espaciados:** Coincide con el diseño original OpenSpec, pero no compila en Vento 1.12 / Lume 2.3.3.
+
+**Alternativa descartada — array literal `{{ ["a","b"] |> postImage }}`:** Funciona, pero es peor para autores; se abandona salvo que un shortcode lo necesite internamente.
+
+**Alternativa descartada — componentes Vento (`_components/`):** Requieren sintaxis `{{ comp.postImage() }}`. Los filters con pipe son más ergonómicos para autores de posts.
 
 **Alternativa descartada — HTML directo en markdown:** Válido para casos puntuales, pero sin tipado ni validación. El shortcode genera HTML correcto sin que el autor escriba iframes ni clases a mano.
 
 ### 3. Formato de args para postGallery
 
-**Decisión:** String delimitado por pipe `"src|alt|caption"` por ítem, número variable de argumentos posicionales.
+**Decisión:** String delimitado por pipe `"src|alt|caption"` por ítem; primer ítem vía pipe, resto posicionales.
 
 ```
-{{ postGallery "est-1.jpg|Estudio 1|Mañana" "est-2.jpg|Estudio 2|Tarde" }}
+{{ "est-1.jpg|Estudio 1|Mañana" |> postGallery("est-2.jpg|Estudio 2|Tarde") }}
 ```
 
 **Por qué pipe y no objetos JSON:** Los objetos JSON en markdown son verbosos y propensos a errores de escape. El pipe es legible y suficiente para tres campos.
-
-**Por qué no array YAML en el shortcode:** Vento no soporta arrays literales como argumentos de helper de forma natural.
 
 ### 4. Detección de proveedor por URL en postAudio y postVideo
 

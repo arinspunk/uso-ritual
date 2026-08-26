@@ -3,6 +3,13 @@ import multilanguage from "lume/plugins/multilanguage.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
 import transformImages from "lume/plugins/transform_images.ts";
+import {
+  renderPostAudio,
+  renderPostGallery,
+  renderPostImage,
+  renderPostQuote,
+  renderPostVideo,
+} from "./media_shortcodes.ts";
 
 const site = lume({
   src: "./src",
@@ -74,6 +81,22 @@ site.filter("formatDate", (value: Date, lang: string) => {
     day: "numeric",
   }).format(value);
 });
+
+// ─── Shortcodes de media para posts ───
+// Locked author syntax (Vento filters — multi-arg tags are not parseable):
+//   {{ "src" |> postImage("alt", "caption?", "wide|full|text?") }}
+//   {{ "url" |> postVideo("caption?", "wide|full|text?") }}
+//   {{ "url" |> postAudio("caption?") }}
+//   {{ "src|alt|cap" |> postGallery("src|alt|cap", ...) }}
+//   {{ "texto" |> postQuote("atribución?") }}
+// Markup source of truth: src/_includes/partials/post-media.vto (mirrored in media_shortcodes.ts).
+// Raster image src: JPG/JPEG/PNG → .webp via resolveImageSrc (transform_images); SVG unchanged.
+
+site.filter("postImage", renderPostImage);
+site.filter("postVideo", renderPostVideo);
+site.filter("postAudio", renderPostAudio);
+site.filter("postGallery", renderPostGallery);
+site.filter("postQuote", renderPostQuote);
 
 site.copy("assets/css");
 site.copy("assets/fonts");

@@ -23,11 +23,11 @@ El layout del post SHALL usar una única columna de lectura centrada. Los elemen
 El sistema SHALL implementar el breakout mediante CSS grid en el contenedor `.post__content`, de modo que elementos con clase `post-media--wide` y `post-media--full` puedan extenderse más allá del ancho de texto sin romper el flujo del documento.
 
 #### Scenario: Imagen wide se extiende más allá del texto
-- **WHEN** un post contiene `{{ postImage "cover.jpg" "Alt" }}` (size wide por defecto)
+- **WHEN** un post contiene `{{ "cover.jpg" |> postImage("Alt") }}` (size wide por defecto)
 - **THEN** la figura renderizada tiene un ancho visual de ~72ch, mayor que los 48ch del texto adyacente, y está centrada respecto a la columna de texto
 
 #### Scenario: Imagen full ocupa el ancho máximo disponible
-- **WHEN** un post contiene `{{ postImage "hero.jpg" "Hero" "" "full" }}`
+- **WHEN** un post contiene `{{ "hero.jpg" |> postImage("Hero", "", "full") }}`
 - **THEN** la figura renderizada ocupa el 100% del ancho del contenedor del artículo
 
 #### Scenario: Texto adyacente a media mantiene 48ch
