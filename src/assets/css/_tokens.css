@@ -1,0 +1,95 @@
+/* Fuentes */
+
+@font-face {
+  font-family: 'Novela';
+  src: url('/assets/fonts/novela-regular-webfont.woff2') format('woff2'),
+       url('/assets/fonts/novela-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Isaac';
+  src: url('/assets/fonts/IsaacRegular.woff2') format('woff2'),
+       url('/assets/fonts/IsaacRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Isaac';
+  src: url('/assets/fonts/IsaacRegularItalic.woff2') format('woff2'),
+       url('/assets/fonts/IsaacRegularItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Variáveis */
+:root {
+  /* ── Escala primitiva — Sanzo Wada Classic #295 ── */
+
+  /* Cream Yellow (#fdbf68) — tintes hacia blanco */
+  --cy-0:  #fdbf68;
+  --cy-10: #fdc577;
+  --cy-20: #fdcc86;
+  --cy-30: #fed295;
+  --cy-40: #fed9a4;
+  --cy-50: #fedfb4;
+  --cy-60: #fee5c3;
+  --cy-70: #feecd2;
+  --cy-80: #fff2e1;
+  --cy-90: #fff9f0;
+
+  /* Dull Violet Black (#1e0e3f) — sombras hacia negro */
+  --dvb-0:  #1e0e3f;
+  --dvb-10: #1b0d39;
+  --dvb-20: #180b32;
+  --dvb-30: #150a2c;
+  --dvb-40: #120826;
+  --dvb-50: #0f0720;
+
+  /* Colores fijos de paleta */
+  --wada-yellow: #fff200;
+  --wada-blue:   #006eb8;
+
+  /* ── Tokens semánticos ── */
+  --color-bg:         var(--cy-70);
+  --color-surface:    var(--cy-60);
+  --color-border:     var(--cy-60);
+  --color-text:       var(--dvb-0);
+  --color-text-muted: #625270; /* DVB aclarado 30% hacia --cy-80 */
+  --color-accent:     var(--wada-blue);
+
+  /* Tipografia */
+  --font-body: 'Novela', Georgia, serif;
+  --font-ui:   'Isaac', system-ui, sans-serif;
+  --font-ui-features: "ss01";
+  --font-size-base: 1rem; /* 16px mobile */
+  --font-size-h1-ratio: 1.3125; /* 21px at 16px base — traditional scale */
+  --font-size-h1: calc(1rem * var(--font-size-h1-ratio));
+  --font-size-caption: 0.875rem; /* 14px at 16px base — traditional scale */
+  --font-size-small: 0.75rem; /* 12px at 16px base — traditional scale */
+  --line-height: 1.5;
+  --line-height-h1: calc(var(--line-height) / var(--font-size-h1-ratio)); /* 1 line = 1 baseline */
+  --baseline: calc(var(--line-height) * 1em);
+
+  /* Espaçamento */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.75rem;
+  --space-xl:  3rem;
+  --space-2xl: 5rem;
+
+  /* Layout */
+  --max-width: 720px;
+  --gutter:    clamp(1rem, 5vw, 2.5rem);
+}
+
+@media (min-width: 768px)  { :root { --font-size-base: 1.0625rem; } } /* 17px */
+@media (min-width: 1024px) { :root { --font-size-base: 1.125rem;  } } /* 18px */
+@media (min-width: 1280px) { :root { --font-size-base: 1.1875rem; } } /* 19px */
+@media (min-width: 1440px) { :root { --font-size-base: 1.25rem;   } } /* 20px */

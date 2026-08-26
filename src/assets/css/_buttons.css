@@ -1,0 +1,21 @@
+.btn-primary,
+.btn-alt {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--dvb-0);
+  color: var(--cy-80);
+}
+
+.btn-alt {
+  background: var(--wada-yellow);
+  color: var(--dvb-0);
+}

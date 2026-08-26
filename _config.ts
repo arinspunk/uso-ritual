@@ -3,6 +3,7 @@ import multilanguage from "lume/plugins/multilanguage.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
 import transformImages from "lume/plugins/transform_images.ts";
+import lightningCss from "lume/plugins/lightningcss.ts";
 import {
   renderPostAudio,
   renderPostGallery,
@@ -98,7 +99,7 @@ site.filter("postAudio", renderPostAudio);
 site.filter("postGallery", renderPostGallery);
 site.filter("postQuote", renderPostQuote);
 
-site.copy("assets/css");
+site.use(lightningCss());
 site.copy("assets/fonts");
 site.loadAssets([".svg"]);
 site.use(transformImages());

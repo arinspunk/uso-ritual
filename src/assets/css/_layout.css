@@ -1,0 +1,12 @@
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: calc(var(--baseline) * 3) var(--gutter);
+
+  /* Posts need a wider shell so the breakout grid can reach ~72ch wide / full bleed */
+  &:has(.post) {
+    max-width: none;
+  }
+}

@@ -1,0 +1,35 @@
+h2, h3 {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: var(--line-height);
+  margin-bottom: var(--baseline);
+}
+
+h3 {
+  font-style: italic;
+}
+
+p {
+  margin-bottom: var(--baseline);
+}
+
+blockquote {
+  border-left: 3px solid var(--wada-blue);
+  padding-left: var(--space-md);
+  margin-bottom: var(--baseline);
+
+  p {
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  cite {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: var(--font-size-caption);
+    font-style: normal;
+    margin-top: var(--space-xs);
+  }
+}
