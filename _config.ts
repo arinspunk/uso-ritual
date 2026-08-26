@@ -76,6 +76,7 @@ site.filter("formatDate", (value: Date, lang: string) => {
 });
 
 site.copy("assets/css");
+site.copy("assets/fonts");
 site.loadAssets([".svg"]);
 site.use(transformImages());
 

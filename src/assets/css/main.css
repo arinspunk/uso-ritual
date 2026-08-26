@@ -2,23 +2,80 @@
    Uso Ritual — CSS de raiz, sem dependências externas
    ───────────────────────────────────────── */
 
+/* Fuentes */
+
+@font-face {
+  font-family: 'Novela';
+  src: url('/assets/fonts/novela-regular-webfont.woff2') format('woff2'),
+       url('/assets/fonts/novela-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Isaac';
+  src: url('/assets/fonts/IsaacRegular.woff2') format('woff2'),
+       url('/assets/fonts/IsaacRegular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Isaac';
+  src: url('/assets/fonts/IsaacRegularItalic.woff2') format('woff2'),
+       url('/assets/fonts/IsaacRegularItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Variáveis */
 :root {
-  /* Cores */
-  --color-bg:        #fafaf8;
-  --color-text:      #1a1a1a;
-  --color-text-muted:#6b6b6b;
-  --color-accent:    #c8102e;
-  --color-border:    #e4e4e0;
-  --color-surface:   #f2f2ee;
+  /* ── Escala primitiva — Sanzo Wada Classic #295 ── */
+
+  /* Cream Yellow (#fdbf68) — tintes hacia blanco */
+  --cy-0:  #fdbf68;
+  --cy-10: #fdc577;
+  --cy-20: #fdcc86;
+  --cy-30: #fed295;
+  --cy-40: #fed9a4;
+  --cy-50: #fedfb4;
+  --cy-60: #fee5c3;
+  --cy-70: #feecd2;
+  --cy-80: #fff2e1;
+  --cy-90: #fff9f0;
+
+  /* Dull Violet Black (#1e0e3f) — sombras hacia negro */
+  --dvb-0:  #1e0e3f;
+  --dvb-10: #1b0d39;
+  --dvb-20: #180b32;
+  --dvb-30: #150a2c;
+  --dvb-40: #120826;
+  --dvb-50: #0f0720;
+
+  /* Colores fijos de paleta */
+  --wada-yellow: #fff200;
+  --wada-blue:   #006eb8;
+
+  /* ── Tokens semánticos ── */
+  --color-bg:         var(--cy-70);
+  --color-surface:    var(--cy-60);
+  --color-border:     var(--cy-60);
+  --color-text:       var(--dvb-0);
+  --color-text-muted: #625270; /* DVB aclarado 30% hacia --cy-80 */
+  --color-accent:     var(--wada-blue);
 
   /* Tipografia */
-  --font-body: Georgia, "Times New Roman", serif;
-  --font-ui:   system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: 'Novela', Georgia, serif;
+  --font-ui:   'Isaac', system-ui, sans-serif;
+  --font-ui-features: "ss01";
   --font-size-base: 1rem;            /* 16px mobile */
-  --font-size-h1:      calc(1rem * 1.3125); /* 21px at 16px base — traditional scale */
+  --font-size-h1: calc(1rem * 1.3125); /* 21px at 16px base — traditional scale */
   --font-size-caption: 0.875rem;           /* 14px at 16px base — traditional scale */
-  --line-height: 1.7;
+  --line-height: 1.5;
+  --baseline: calc(var(--line-height) * 1em);
 
   /* Espaçamento */
   --space-xs:  0.25rem;
@@ -49,6 +106,7 @@ html {
   font-size: var(--font-size-base);
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  font-feature-settings: "salt";
 }
 
 body {
@@ -69,7 +127,7 @@ img, video {
 }
 
 a {
-  color: var(--color-accent);
+  color: inherit;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -91,6 +149,10 @@ a:hover {
 /* ─── Cabeçalho ─── */
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   padding: var(--space-md) var(--gutter);
 }
@@ -105,16 +167,14 @@ a:hover {
 
 .site-header__logo {
   font-family: var(--font-ui);
-  font-size: 1.125rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  text-transform: uppercase;
   color: var(--color-text);
   text-decoration: none;
   flex-shrink: 0;
 }
 
 .site-header__logo:hover {
-  color: var(--color-accent);
+  color: var(--cy-0);
 }
 
 .site-nav {
@@ -125,8 +185,6 @@ a:hover {
 
 .site-nav__link {
   font-family: var(--font-ui);
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
   text-decoration: none;
 }
 
@@ -149,13 +207,12 @@ a:hover {
 }
 
 .lang-switcher__item {
-  color: var(--color-text-muted);
+  
   text-decoration: none;
 }
 
 .lang-switcher__item--active {
   color: var(--color-text);
-  font-weight: 600;
   cursor: default;
 }
 
@@ -187,11 +244,11 @@ a:hover {
   gap: var(--space-sm);
   font-family: var(--font-ui);
   font-size: 0.8125rem;
-  color: var(--color-text-muted);
+  
 }
 
 .site-footer__inner a {
-  color: var(--color-text-muted);
+  
   text-decoration: none;
 }
 
@@ -228,19 +285,17 @@ a:hover {
   display: block;
   font-family: var(--font-ui);
   font-size: 0.8125rem;
-  color: var(--color-text-muted);
   margin-bottom: var(--space-sm);
 }
 
 .post-card__excerpt {
-  color: var(--color-text-muted);
   font-size: 0.9375rem;
 }
 
 /* ─── Post ─── */
 
 .post__header {
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--baseline);
 }
 
 .post__title {
@@ -248,13 +303,12 @@ a:hover {
   font-size: var(--font-size-h1);
   font-weight: 400;
   line-height: 1.2;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0;
 }
 
 .post__date {
   font-family: var(--font-ui);
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
+  font-size: var(--font-size-caption);
 }
 
 .post__content {
@@ -265,16 +319,15 @@ a:hover {
 }
 
 .post__content p {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--baseline);
 }
 
 .post__content h2 {
   font-family: var(--font-ui);
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.4;
-  margin-top: var(--space-xl);
-  margin-bottom: var(--space-sm);
+  line-height: var(--line-height);
+  margin-bottom: var(--baseline);
 }
 
 .post__content h3 {
@@ -282,20 +335,18 @@ a:hover {
   font-size: 1rem;
   font-weight: 400;
   font-style: italic;
-  line-height: 1.4;
-  margin-top: var(--space-lg);
-  margin-bottom: var(--space-sm);
+  line-height: var(--line-height);
+  margin-bottom: var(--baseline);
 }
 
 .post__content blockquote {
   border-left: 3px solid var(--color-accent);
   padding-left: var(--space-md);
-  color: var(--color-text-muted);
-  margin: var(--space-lg) 0;
+  margin-bottom: var(--baseline);
 }
 
 .post__content a {
-  color: var(--color-accent);
+  color: inherit;
 }
 
 .post__translations {
@@ -303,8 +354,6 @@ a:hover {
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-border);
   font-family: var(--font-ui);
-  font-size: 0.875rem;
-  color: var(--color-text-muted);
 }
 
 /* ─── Páginas estáticas ─── */
@@ -323,11 +372,11 @@ a:hover {
 }
 
 .page__content p {
-  margin-bottom: var(--space-md);
+  margin-bottom: 1em;
 }
 
 .page__content a {
-  color: var(--color-accent);
+  color: inherit;
 }
 
 /* ─── Post: corpo de duas colunas ─── */
@@ -398,7 +447,7 @@ a:hover {
   display: block;
   font-family: var(--font-body);
   font-size: var(--font-size-caption);
-  color: var(--color-text-muted);
+  
   margin-top: var(--space-xs);
   line-height: 1.5;
 }
@@ -445,14 +494,13 @@ a:hover {
   display: block;
   font-family: var(--font-ui);
   font-size: 0.8125rem;
-  color: var(--color-text-muted);
+  
   font-style: normal;
   margin-top: var(--space-xs);
 }
 
 .media-item--link {
   font-family: var(--font-ui);
-  font-size: 0.875rem;
 }
 
 /* ─── Gallery ─── */
@@ -523,4 +571,32 @@ a:hover {
     width: 56px;
     height: 56px;
   }
+}
+
+/* ─── Botões ─── */
+
+.btn-primary {
+  display: inline-block;
+  background: var(--dvb-0);
+  color: var(--cy-80);
+  padding: 0.625rem 1.25rem;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.btn-alt {
+  display: inline-block;
+  background: var(--wada-yellow);
+  color: var(--dvb-0);
+  padding: 0.625rem 1.25rem;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  text-decoration: none;
 }

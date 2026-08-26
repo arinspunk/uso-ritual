@@ -1,0 +1,601 @@
+---
+title: Paleta — Sanzo Wada Classic #295
+layout: layouts/base.vto
+url: /paleta-295/
+---
+
+<style>
+  /* ── Layout de la herramienta ─────────────────────────────── */
+
+  .pp {
+    max-width: 860px;
+    margin-inline: auto;
+    padding: 2rem 1.5rem 4rem;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  .pp-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.25rem;
+    color: #1a1a1a;
+  }
+
+  .pp-subtitle {
+    font-size: 0.8125rem;
+    color: #6b6b6b;
+    margin-bottom: 3rem;
+  }
+
+  .pp-section {
+    margin-bottom: 3rem;
+  }
+
+  .pp-heading {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── Escala de swatches ───────────────────────────────────── */
+
+  .pp-scale {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .pp-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
+  .pp-swatch__color {
+    width: 72px;
+    height: 56px;
+    border: 1px solid rgba(0,0,0,0.08);
+    background-color: var(--c);
+  }
+
+  .pp-swatch__label {
+    font-size: 0.625rem;
+    color: #6b6b6b;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.3;
+    max-width: 72px;
+  }
+
+  /* ── Combinaciones ────────────────────────────────────────── */
+
+  .pp-combos {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .pp-combo {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .pp-combo__preview {
+    padding: 1.5rem;
+    background-color: var(--bg);
+    color: var(--fg);
+  }
+
+  .pp-combo__h {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .pp-combo__p {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .pp-combo__caption {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.8125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .pp-combo__link {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9375rem;
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  .pp-combo__meta {
+    padding: 1rem 1.25rem;
+    background: #f7f7f5;
+    border-left: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .pp-combo__name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .pp-combo__colors {
+    font-size: 0.6875rem;
+    color: #6b6b6b;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.8;
+  }
+
+  .pp-combo__ratio {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .pp-combo__wcag {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 0.125rem 0.375rem;
+    border-radius: 2px;
+    display: inline-block;
+    margin-top: 0.125rem;
+  }
+
+  .pp-combo__wcag--aaa {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .pp-combo__star {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #c8102e;
+  }
+
+  /* ── Combinaciones dark ──────────────────────────────────── */
+
+  .pp-combo--dark .pp-combo__meta {
+    background: #100720;
+    border-left-color: rgba(255,255,255,0.06);
+  }
+
+  .pp-combo--dark .pp-combo__name,
+  .pp-combo--dark .pp-combo__ratio {
+    color: #fdbf68;
+  }
+
+  .pp-combo--dark .pp-combo__colors {
+    color: rgba(253,191,104,0.5);
+  }
+
+  .pp-combo--dark .pp-combo__star {
+    color: #fff200;
+  }
+
+  /* ── Colores de acción y extra ────────────────────────────── */
+
+  .pp-extras {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .pp-extra {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .pp-extra__label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+  }
+
+  .pp-action__btn {
+    display: inline-block;
+    background: #fff200;
+    color: #1e0e3f;
+    padding: 0.625rem 1.25rem;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: none;
+    cursor: default;
+    letter-spacing: 0.01em;
+  }
+
+  .pp-extra__note {
+    font-size: 0.8125rem;
+    color: #6b6b6b;
+    line-height: 1.5;
+  }
+
+  .pp-extra__hex {
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .pp-blue-samples {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pp-blue__swatch {
+    width: 120px;
+    height: 40px;
+    background: #006eb8;
+  }
+
+  .pp-blue__on-dark {
+    display: inline-block;
+    padding: 0.25rem 0.625rem;
+    background: #1e0e3f;
+    font-family: Georgia, serif;
+    font-size: 0.875rem;
+    color: #006eb8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .pp-blue__border {
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid #006eb8;
+    font-family: Georgia, serif;
+    font-size: 0.875rem;
+    color: #1e0e3f;
+    background: #fdbf68;
+  }
+</style>
+
+<div class="pp">
+
+  <h1 class="pp-title">Paleta — Sanzo Wada Classic #295</h1>
+  <p class="pp-subtitle">Cream Yellow · Yellow · Blue · Dull Violet Black — herramienta de comparación</p>
+
+  <!-- ── Escala de tintes: fondo ─────────────────────────────── -->
+  <section class="pp-section">
+    <h2 class="pp-heading">Tintes del fondo — Cream Yellow</h2>
+    <div class="pp-scale">
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fdbf68"></div>
+        <p class="pp-swatch__label">0%<br>#fdbf68</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fdc577"></div>
+        <p class="pp-swatch__label">10%<br>#fdc577</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fdcc86"></div>
+        <p class="pp-swatch__label">20%<br>#fdcc86</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fed295"></div>
+        <p class="pp-swatch__label">30%<br>#fed295</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fed9a4"></div>
+        <p class="pp-swatch__label">40%<br>#fed9a4</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fedfb4"></div>
+        <p class="pp-swatch__label">50%<br>#fedfb4</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fee5c3"></div>
+        <p class="pp-swatch__label">60%<br>#fee5c3</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #feecd2"></div>
+        <p class="pp-swatch__label">70%<br>#feecd2</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fff2e1"></div>
+        <p class="pp-swatch__label">80%<br>#fff2e1</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #fff9f0"></div>
+        <p class="pp-swatch__label">90%<br>#fff9f0</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Escala de sombras: texto ────────────────────────────── -->
+  <section class="pp-section">
+    <h2 class="pp-heading">Sombras del texto — Dull Violet Black</h2>
+    <div class="pp-scale">
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #1e0e3f"></div>
+        <p class="pp-swatch__label">0%<br>#1e0e3f</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #1b0d39"></div>
+        <p class="pp-swatch__label">10%<br>#1b0d39</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #180b32"></div>
+        <p class="pp-swatch__label">20%<br>#180b32</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #150a2c"></div>
+        <p class="pp-swatch__label">30%<br>#150a2c</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #120826"></div>
+        <p class="pp-swatch__label">40%<br>#120826</p>
+      </div>
+      <div class="pp-swatch">
+        <div class="pp-swatch__color" style="--c: #0f0720"></div>
+        <p class="pp-swatch__label">50%<br>#0f0720</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Combinaciones nombradas ─────────────────────────────── -->
+  <section class="pp-section">
+    <h2 class="pp-heading">Combinaciones — modo claro</h2>
+    <div class="pp-combos">
+
+      <!-- 1. Wada puro -->
+      <div class="pp-combo">
+        <div class="pp-combo__preview" style="--bg: #fdbf68; --fg: #1e0e3f">
+          <p class="pp-combo__h">Título de muestra — Wada puro</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Wada puro</p>
+          <p class="pp-combo__colors">bg #fdbf68 (0%)<br>text #1e0e3f (0%)</p>
+          <p class="pp-combo__ratio">~11:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+      <!-- 2. Dorado suave -->
+      <div class="pp-combo">
+        <div class="pp-combo__preview" style="--bg: #fedfb4; --fg: #1e0e3f">
+          <p class="pp-combo__h">Título de muestra — Dorado suave</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Dorado suave</p>
+          <p class="pp-combo__colors">bg #fedfb4 (50%)<br>text #1e0e3f (0%)</p>
+          <p class="pp-combo__ratio">~13.5:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+      <!-- 3. Crema ★ -->
+      <div class="pp-combo">
+        <div class="pp-combo__preview" style="--bg: #fee5c3; --fg: #1e0e3f">
+          <p class="pp-combo__h">Título de muestra — Crema</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Crema</p>
+          <p class="pp-combo__colors">bg #fee5c3 (60%)<br>text #1e0e3f (0%)</p>
+          <p class="pp-combo__ratio">~14.5:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+          <p class="pp-combo__star">★ recomendada</p>
+        </div>
+      </div>
+
+      <!-- 4. Pergamino -->
+      <div class="pp-combo">
+        <div class="pp-combo__preview" style="--bg: #feecd2; --fg: #1b0d39">
+          <p class="pp-combo__h">Título de muestra — Pergamino</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Pergamino</p>
+          <p class="pp-combo__colors">bg #feecd2 (70%)<br>text #1b0d39 (10%)</p>
+          <p class="pp-combo__ratio">~15.5:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+      <!-- 5. Leche -->
+      <div class="pp-combo">
+        <div class="pp-combo__preview" style="--bg: #fff2e1; --fg: #180b32">
+          <p class="pp-combo__h">Título de muestra — Leche</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Leche</p>
+          <p class="pp-combo__colors">bg #fff2e1 (80%)<br>text #180b32 (20%)</p>
+          <p class="pp-combo__ratio">~17:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+      <!-- 6. 90/30 -->
+      <div class="pp-combo">
+        <div class="pp-combo__preview" style="--bg: #fff9f0; --fg: #150a2c">
+          <p class="pp-combo__h">Título de muestra — 90 / 30</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">90 / 30</p>
+          <p class="pp-combo__colors">bg #fff9f0 (90%)<br>text #150a2c (30%)</p>
+          <p class="pp-combo__ratio">~18:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Combinaciones dark ─────────────────────────────────── -->
+  <section class="pp-section">
+    <h2 class="pp-heading">Combinaciones — modo oscuro</h2>
+    <div class="pp-combos">
+
+      <!-- dark 1. Wada puro -->
+      <div class="pp-combo pp-combo--dark">
+        <div class="pp-combo__preview" style="--bg: #150a2c; --fg: #fdbf68">
+          <p class="pp-combo__h">Título de muestra — Wada puro</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Wada puro</p>
+          <p class="pp-combo__colors">bg #150a2c (30%)<br>text #fdbf68 (0%)</p>
+          <p class="pp-combo__ratio">~11:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+      <!-- dark 2. Dorado suave -->
+      <div class="pp-combo pp-combo--dark">
+        <div class="pp-combo__preview" style="--bg: #150a2c; --fg: #fedfb4">
+          <p class="pp-combo__h">Título de muestra — Dorado suave</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Dorado suave</p>
+          <p class="pp-combo__colors">bg #150a2c (30%)<br>text #fedfb4 (50%)</p>
+          <p class="pp-combo__ratio">~13.5:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+      <!-- dark 3. Crema ★ -->
+      <div class="pp-combo pp-combo--dark">
+        <div class="pp-combo__preview" style="--bg: #150a2c; --fg: #fee5c3">
+          <p class="pp-combo__h">Título de muestra — Crema</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Crema</p>
+          <p class="pp-combo__colors">bg #150a2c (30%)<br>text #fee5c3 (60%)</p>
+          <p class="pp-combo__ratio">~14.5:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+          <p class="pp-combo__star">★ recomendada</p>
+        </div>
+      </div>
+
+      <!-- dark 4. Pergamino -->
+      <div class="pp-combo pp-combo--dark">
+        <div class="pp-combo__preview" style="--bg: #120826; --fg: #feecd2">
+          <p class="pp-combo__h">Título de muestra — Pergamino</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Pergamino</p>
+          <p class="pp-combo__colors">bg #120826 (40%)<br>text #feecd2 (70%)</p>
+          <p class="pp-combo__ratio">~15.5:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+      <!-- dark 5. Leche -->
+      <div class="pp-combo pp-combo--dark">
+        <div class="pp-combo__preview" style="--bg: #0f0720; --fg: #fff2e1">
+          <p class="pp-combo__h">Título de muestra — Leche</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">Leche</p>
+          <p class="pp-combo__colors">bg #0f0720 (50%)<br>text #fff2e1 (80%)</p>
+          <p class="pp-combo__ratio">~17:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+      <!-- dark 6. 90/30 -->
+      <div class="pp-combo pp-combo--dark">
+        <div class="pp-combo__preview" style="--bg: #0f0720; --fg: #fff9f0">
+          <p class="pp-combo__h">Título de muestra — 90 / 30</p>
+          <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
+          <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
+          <p><a href="#" class="pp-combo__link" onclick="return false">Un enlace de muestra en color texto con subrayado</a></p>
+        </div>
+        <div class="pp-combo__meta">
+          <p class="pp-combo__name">90 / 30</p>
+          <p class="pp-combo__colors">bg #0f0720 (50%)<br>text #fff9f0 (90%)</p>
+          <p class="pp-combo__ratio">~18:1</p>
+          <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Color de acción y extra ─────────────────────────────── -->
+  <section class="pp-section">
+    <h2 class="pp-heading">Colores de apoyo</h2>
+    <div class="pp-extras">
+
+      <div class="pp-extra">
+        <p class="pp-extra__label">Acción — Yellow</p>
+        <button class="pp-action__btn" type="button">Acción de muestra</button>
+        <p class="pp-extra__note">
+          <span class="pp-extra__hex">#fff200</span> — Yellow<br>
+          Para botones y elementos de acción.<br>
+          Texto en Dull Violet Black para contraste.
+        </p>
+      </div>
+
+      <div class="pp-extra">
+        <p class="pp-extra__label">Extra — Blue</p>
+        <div class="pp-blue-samples">
+          <div class="pp-blue__swatch"></div>
+          <span class="pp-blue__on-dark">Enlace sobre fondo oscuro</span>
+          <div class="pp-blue__border">Cita o bloque destacado</div>
+        </div>
+        <p class="pp-extra__note">
+          <span class="pp-extra__hex">#006eb8</span> — Blue<br>
+          Acento secundario: bordes, citas,<br>
+          links sobre fondo violeta oscuro.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</div>
