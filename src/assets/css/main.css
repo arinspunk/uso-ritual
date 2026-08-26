@@ -72,10 +72,12 @@
   --font-ui:   'Isaac', system-ui, sans-serif;
   --font-ui-features: "ss01";
   --font-size-base: 1rem; /* 16px mobile */
-  --font-size-h1: calc(1rem * 1.3125); /* 21px at 16px base — traditional scale */
+  --font-size-h1-ratio: 1.3125; /* 21px at 16px base — traditional scale */
+  --font-size-h1: calc(1rem * var(--font-size-h1-ratio));
   --font-size-caption: 0.875rem; /* 14px at 16px base — traditional scale */
   --font-size-small: 0.75rem; /* 12px at 16px base — traditional scale */
   --line-height: 1.5;
+  --line-height-h1: calc(var(--line-height) / var(--font-size-h1-ratio)); /* 1 line = 1 baseline */
   --baseline: calc(var(--line-height) * 1em);
 
   /* Espaçamento */
@@ -304,14 +306,14 @@ a:hover {
 .post__header {
   max-width: 48ch;
   width: 100%;
-  margin: 0 auto var(--baseline);
+  margin: 0 auto calc(var(--baseline) * 2);
 }
 
 .post__title {
   font-family: var(--font-ui);
   font-size: var(--font-size-h1);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: var(--line-height-h1);
   margin-bottom: 0;
 }
 
