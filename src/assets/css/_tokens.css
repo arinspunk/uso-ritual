@@ -56,7 +56,7 @@
   --wada-blue:   #006eb8;
 
   /* ── Tokens semánticos ── */
-  --color-bg:         var(--cy-60);
+  --color-bg:         var(--cy-70);
   --color-surface:    var(--cy-60);
   --color-border:     var(--cy-60);
   --color-text:       var(--dvb-0);
