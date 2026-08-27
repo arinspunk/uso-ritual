@@ -1,16 +1,16 @@
 ---
 layout: layouts/base.vto
 ---
-<div class="post">
-  {{ set posts = search.pages(`lang=${lang} type=post`, "date=desc") }}
+{{ set posts = search.pages(`lang=${lang} type=post`, "date=desc") }}
 
-  <div class="post__header post__header--center">
-    <h1 class="post__title">Uso Ritual</h1>
-    <p class="post__subtitle">Música e outros relatos</p>
+<div class="page-body">
+  <div class="page-header page-header--center">
+    <h1 class="page-header__title">Uso Ritual</h1>
+    <p class="page-header__subtitle">Música e outros relatos</p>
   </div>
 
   {{ if posts.length }}
-    <ol class="post-list" reversed>
+    <ol class="post-list col col--wide" reversed>
       {{ for post of posts }}
         {{ set thumbSrc = post.thumbnail || null }}
         <li class="post-list__item">

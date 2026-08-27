@@ -89,7 +89,7 @@ export function normalizeSize(
 
 function captionHtml(caption: string | undefined): string {
   if (!caption) return "";
-  return `\n  <figcaption class="post-media__caption">${escapeHtml(caption)}</figcaption>`;
+  return `\n  <figcaption class="media__caption">${escapeHtml(caption)}</figcaption>`;
 }
 
 /** HTML mirrors `src/_includes/partials/post-media.vto` (kind=image). */
@@ -100,7 +100,7 @@ export function renderPostImage(
   size?: string,
 ): string {
   const sz = normalizeSize(size, "wide");
-  return `<figure class="post-media post-media--${sz}">\n  <img src="${resolveImageSrc(src)}" alt="${escapeHtml(alt)}" loading="lazy">${captionHtml(caption)}\n</figure>`;
+  return `<figure class="media col col--${sz}">\n  <img src="${resolveImageSrc(src)}" alt="${escapeHtml(alt)}" loading="lazy">${captionHtml(caption)}\n</figure>`;
 }
 
 /** HTML mirrors partial kind=embed|link for video. */
@@ -115,10 +115,10 @@ export function renderPostVideo(
 
   if (normalized.mode === "link") {
     const label = escapeHtml(caption ?? url);
-    return `<a class="post-media post-media--link" href="${escapeHtml(normalized.href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    return `<a class="media media--link" href="${escapeHtml(normalized.href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   }
 
-  return `<figure class="post-media post-media--${sz}">\n  <div class="media-embed">\n    <iframe src="${escapeHtml(normalized.src)}" title="${title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>\n  </div>${captionHtml(caption)}\n</figure>`;
+  return `<figure class="media col col--${sz}">\n  <div class="media-embed">\n    <iframe src="${escapeHtml(normalized.src)}" title="${title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>\n  </div>${captionHtml(caption)}\n</figure>`;
 }
 
 /** HTML mirrors partial kind=audio|link. Always wide. */
@@ -128,13 +128,13 @@ export function renderPostAudio(url: string, caption?: string): string {
 
   if (normalized.mode === "link") {
     const label = escapeHtml(caption ?? url);
-    return `<a class="post-media post-media--link" href="${escapeHtml(normalized.href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+    return `<a class="media media--link" href="${escapeHtml(normalized.href)}" target="_blank" rel="noopener noreferrer">${label}</a>`;
   }
 
   const spotify = normalized.src.includes("spotify.com")
-    ? " post-media--spotify"
+    ? " media--spotify"
     : "";
-  return `<div class="post-media post-media--wide post-media--audio${spotify}">\n  <iframe src="${escapeHtml(normalized.src)}" title="${title}" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>${captionHtml(caption)}\n</div>`;
+  return `<div class="media col col--wide media--audio${spotify}">\n  <iframe src="${escapeHtml(normalized.src)}" title="${title}" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>${captionHtml(caption)}\n</div>`;
 }
 
 /** HTML mirrors partial kind=gallery. Items: `"src|alt|caption"`. */
@@ -146,11 +146,11 @@ export function renderPostGallery(
   const figures = items.map((item) => {
     const [src = "", alt = "", cap] = item.split("|");
     const figcaption = cap
-      ? `\n    <figcaption class="post-media__caption">${escapeHtml(cap)}</figcaption>`
+      ? `\n    <figcaption class="media__caption">${escapeHtml(cap)}</figcaption>`
       : "";
     return `  <figure class="post-gallery__item">\n    <img src="${resolveImageSrc(src)}" alt="${escapeHtml(alt)}" loading="lazy">${figcaption}\n  </figure>`;
   }).join("\n");
-  return `<div class="post-media post-media--wide post-gallery">\n${figures}\n</div>`;
+  return `<div class="media col col--wide post-gallery">\n${figures}\n</div>`;
 }
 
 /** HTML mirrors partial kind=quote. */

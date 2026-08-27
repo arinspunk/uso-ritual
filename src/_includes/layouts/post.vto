@@ -2,14 +2,14 @@
 layout: layouts/base.vto
 ---
 <article class="post">
-  <header class="post__header">
-    <h1 class="post__title">{{ title }}</h1>
-    <time class="post__date" datetime="{{ date |> date('yyyy-MM-dd') }}">
+  <header class="page-header">
+    <h1 class="page-header__title">{{ title }}</h1>
+    <time class="page-header__date" datetime="{{ date |> date('yyyy-MM-dd') }}">
       {{ date |> formatDate(lang) }}
     </time>
   </header>
 
-  <div class="post__content">
+  <div class="page-body">
     {{ content }}
   </div>
 

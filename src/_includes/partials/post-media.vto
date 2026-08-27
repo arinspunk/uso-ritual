@@ -5,41 +5,41 @@
 #}}
 
 {{ if kind === "image" }}
-<figure class="post-media post-media--{{ size }}">
+<figure class="media col col--{{ size }}">
   <img src="{{ src }}" alt="{{ alt }}" loading="lazy">
   {{ if caption }}
-  <figcaption class="post-media__caption">{{ caption }}</figcaption>
+  <figcaption class="media__caption">{{ caption }}</figcaption>
   {{ /if }}
 </figure>
 {{ /if }}
 
 {{ if kind === "embed" }}
-<figure class="post-media post-media--{{ size }}">
+<figure class="media col col--{{ size }}">
   <div class="media-embed">
     <iframe src="{{ src }}" title="{{ title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
   </div>
   {{ if caption }}
-  <figcaption class="post-media__caption">{{ caption }}</figcaption>
+  <figcaption class="media__caption">{{ caption }}</figcaption>
   {{ /if }}
 </figure>
 {{ /if }}
 
 {{ if kind === "audio" }}
-<div class="post-media post-media--wide post-media--audio{{ spotify ? " post-media--spotify" : "" }}">
+<div class="media col col--wide media--audio{{ spotify ? " media--spotify" : "" }}">
   <iframe src="{{ src }}" title="{{ title }}" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   {{ if caption }}
-  <figcaption class="post-media__caption">{{ caption }}</figcaption>
+  <figcaption class="media__caption">{{ caption }}</figcaption>
   {{ /if }}
 </div>
 {{ /if }}
 
 {{ if kind === "gallery" }}
-<div class="post-media post-media--wide post-gallery">
+<div class="media col col--wide post-gallery">
   {{ for item of items }}
   <figure class="post-gallery__item">
     <img src="{{ item.src }}" alt="{{ item.alt }}" loading="lazy">
     {{ if item.caption }}
-    <figcaption class="post-media__caption">{{ item.caption }}</figcaption>
+    <figcaption class="media__caption">{{ item.caption }}</figcaption>
     {{ /if }}
   </figure>
   {{ /for }}
@@ -56,5 +56,5 @@
 {{ /if }}
 
 {{ if kind === "link" }}
-<a class="post-media post-media--link" href="{{ href }}" target="_blank" rel="noopener noreferrer">{{ label }}</a>
+<a class="media media--link" href="{{ href }}" target="_blank" rel="noopener noreferrer">{{ label }}</a>
 {{ /if }}

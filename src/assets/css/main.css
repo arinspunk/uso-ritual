@@ -6,6 +6,7 @@
 @import "./_reset.css";
 @import "./_typography.css";
 @import "./_layout.css";
+@import "./_page-body.css";
 @import "./_header.css";
 @import "./_footer.css";
 @import "./_post-list.css";

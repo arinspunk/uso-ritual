@@ -1,14 +1,14 @@
-.post__header {
+.page-header {
   max-width: 48ch;
   width: 100%;
   margin: 0 auto calc(var(--baseline) * 2);
 }
 
-.post__header--center {
+.page-header--center {
   text-align: center;
 }
 
-.post__title {
+.page-header__title {
   font-family: var(--font-ui);
   font-size: var(--font-size-h1);
   font-weight: 400;
@@ -16,34 +16,12 @@
   margin-bottom: 0;
 }
 
-.post__subtitle {
+.page-header__subtitle {
   margin-top: var(--baseline);
 }
 
-.post__date {
+.page-header__date {
   font-size: var(--font-size-small);
-}
-
-.post__content {
-  display: grid;
-  grid-template-columns:
-    [full-start] minmax(0, 1fr)
-    [wide-start] minmax(0, 12ch)
-    [text-start] min(48ch, 100%)
-    [text-end]   minmax(0, 12ch)
-    [wide-end]   1fr
-    [full-end];
-  width: 100%;
-  text-align: left;
-  hyphens: none;
-
-  & > * {
-    grid-column: text-start / text-end;
-  }
-
-  a {
-    color: inherit;
-  }
 }
 
 .post__translations {
@@ -51,19 +29,4 @@
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-border);
   font-family: var(--font-ui);
-}
-
-/* ─── Páginas estáticas ─── */
-
-.page__title {
-  font-size: 1.5rem;
-  font-weight: normal;
-  margin-bottom: var(--space-xl);
-}
-
-.page__content {
-  max-width: 48ch;
-  width: 100%;
-  text-align: left;
-  hyphens: none;
 }

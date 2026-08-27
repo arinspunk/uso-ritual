@@ -9,7 +9,7 @@ El sistema SHALL proporcionar un shortcode `postImage` usable en el cuerpo markd
 
 #### Scenario: postImage sin caption renderiza solo imagen
 - **WHEN** un post incluye `{{ "disco/cover.jpg" |> postImage("Portada del disco") }}`
-- **THEN** el sistema renderiza un `<figure class="post-media post-media--wide">` con la imagen y sin `<figcaption>`
+- **THEN** el sistema renderiza un `<figure class="media col col--wide">` con la imagen y sin `<figcaption>`
 
 #### Scenario: postImage con caption renderiza figura con pie
 - **WHEN** un post incluye `{{ "disco/cover.jpg" |> postImage("Portada", "Editado en Lisboa, 2025") }}`
@@ -17,7 +17,7 @@ El sistema SHALL proporcionar un shortcode `postImage` usable en el cuerpo markd
 
 #### Scenario: postImage con size full ocupa ancho completo
 - **WHEN** un post incluye `{{ "disco/hero.jpg" |> postImage("Hero", "", "full") }}`
-- **THEN** el sistema renderiza la figura con clase `post-media--full` que ocupa el 100% del ancho del viewport disponible
+- **THEN** el sistema renderiza la figura con clases `media col col--full` que ocupa el 100% del ancho del viewport disponible
 
 ### Requirement: Shortcode postVideo para vídeo inline
 El sistema SHALL proporcionar un shortcode `postVideo` usable en el cuerpo markdown. SHALL aceptar `url` vía pipe y: `caption` (string, opcional), `size` (string `"wide"`, `"full"` o `"text"`, opcional, por defecto `"wide"`). El sistema SHALL detectar el proveedor por URL y generar el embed correspondiente. Proveedores soportados: YouTube (`youtu.be/` o `youtube.com/watch`), Bandcamp (URLs embed-capable con `bandcamp.com`).
@@ -35,7 +35,7 @@ El sistema SHALL proporcionar un shortcode `postAudio` usable en el cuerpo markd
 
 #### Scenario: postAudio con URL de SoundCloud renderiza embed
 - **WHEN** un post incluye `{{ "https://soundcloud.com/artista/track" |> postAudio("Pista en directo") }}`
-- **THEN** el sistema renderiza un `<div class="post-media post-media--wide">` con un `<iframe>` de SoundCloud
+- **THEN** el sistema renderiza un `<div class="media col col--wide">` con un `<iframe>` de SoundCloud
 
 #### Scenario: postAudio con URL de Spotify renderiza embed
 - **WHEN** un post incluye `{{ "https://open.spotify.com/track/abc" |> postAudio("Canción") }}`
@@ -50,7 +50,7 @@ El sistema SHALL proporcionar un shortcode `postGallery` usable en el cuerpo mar
 
 #### Scenario: postGallery con dos imágenes renderiza cuadrícula 1×2
 - **WHEN** un post incluye `{{ "est-1.jpg|Estudio 1|Mañana" |> postGallery("est-2.jpg|Estudio 2|Tarde") }}`
-- **THEN** el sistema renderiza un `<div class="post-media post-media--wide post-gallery">` con dos `<figure>` en cuadrícula de dos columnas
+- **THEN** el sistema renderiza un `<div class="media col col--wide post-gallery">` con dos `<figure>` en cuadrícula de dos columnas
 
 #### Scenario: postGallery con número impar de imágenes no rompe el layout
 - **WHEN** un post incluye tres imágenes en `postGallery`
