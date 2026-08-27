@@ -176,21 +176,21 @@ url: /paleta-295/
   /* ── Combinaciones dark ──────────────────────────────────── */
 
   .pp-combo--dark .pp-combo__meta {
-    background: #100720;
+    background: var(--dvb-50);
     border-left-color: rgba(255,255,255,0.06);
   }
 
   .pp-combo--dark .pp-combo__name,
   .pp-combo--dark .pp-combo__ratio {
-    color: #fdbf68;
+    color: var(--cy-0);
   }
 
   .pp-combo--dark .pp-combo__colors {
-    color: rgba(253,191,104,0.5);
+    color: color-mix(in srgb, var(--cy-0) 50%, transparent);
   }
 
   .pp-combo--dark .pp-combo__star {
-    color: #fff200;
+    color: var(--wada-yellow);
   }
 
   /* ── Colores de acción y extra ────────────────────────────── */
@@ -218,8 +218,8 @@ url: /paleta-295/
 
   .pp-action__btn {
     display: inline-block;
-    background: #fff200;
-    color: #1e0e3f;
+    background: var(--wada-yellow);
+    color: var(--dvb-0);
     padding: 0.625rem 1.25rem;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     font-size: 0.875rem;
@@ -249,78 +249,78 @@ url: /paleta-295/
   .pp-blue__swatch {
     width: 120px;
     height: 40px;
-    background: #006eb8;
+    background: var(--wada-blue);
   }
 
   .pp-blue__on-dark {
     display: inline-block;
     padding: 0.25rem 0.625rem;
-    background: #1e0e3f;
+    background: var(--dvb-0);
     font-family: Georgia, serif;
     font-size: 0.875rem;
-    color: #006eb8;
+    color: var(--wada-blue);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
 
   .pp-blue__border {
     padding: 0.5rem 0.75rem;
-    border-left: 3px solid #006eb8;
+    border-left: 3px solid var(--wada-blue);
     font-family: Georgia, serif;
     font-size: 0.875rem;
-    color: #1e0e3f;
-    background: #fdbf68;
+    color: var(--dvb-0);
+    background: var(--cy-0);
   }
 </style>
 
 <div class="pp">
 
   <h1 class="pp-title">Paleta — Sanzo Wada Classic #295</h1>
-  <p class="pp-subtitle">Cream Yellow · Yellow · Blue · Dull Violet Black — herramienta de comparación</p>
+  <p class="pp-subtitle">Cream Yellow · Yellow · Blue · Dull Violet Black — valores vivos desde <code>_tokens.css</code></p>
 
   <!-- ── Escala de tintes: fondo ─────────────────────────────── -->
   <section class="pp-section">
     <h2 class="pp-heading">Tintes del fondo — Cream Yellow</h2>
     <div class="pp-scale">
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fdbf68"></div>
-        <p class="pp-swatch__label">0%<br>#fdbf68</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-0)"></div>
+        <p class="pp-swatch__label">0%<br>--cy-0</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fdc577"></div>
-        <p class="pp-swatch__label">10%<br>#fdc577</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-10)"></div>
+        <p class="pp-swatch__label">10%<br>--cy-10</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fdcc86"></div>
-        <p class="pp-swatch__label">20%<br>#fdcc86</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-20)"></div>
+        <p class="pp-swatch__label">20%<br>--cy-20</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fed295"></div>
-        <p class="pp-swatch__label">30%<br>#fed295</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-30)"></div>
+        <p class="pp-swatch__label">30%<br>--cy-30</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fed9a4"></div>
-        <p class="pp-swatch__label">40%<br>#fed9a4</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-40)"></div>
+        <p class="pp-swatch__label">40%<br>--cy-40</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fedfb4"></div>
-        <p class="pp-swatch__label">50%<br>#fedfb4</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-50)"></div>
+        <p class="pp-swatch__label">50%<br>--cy-50</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fee5c3"></div>
-        <p class="pp-swatch__label">60%<br>#fee5c3</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-60)"></div>
+        <p class="pp-swatch__label">60%<br>--cy-60</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #feecd2"></div>
-        <p class="pp-swatch__label">70%<br>#feecd2</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-70)"></div>
+        <p class="pp-swatch__label">70%<br>--cy-70</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fff2e1"></div>
-        <p class="pp-swatch__label">80%<br>#fff2e1</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-80)"></div>
+        <p class="pp-swatch__label">80%<br>--cy-80</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #fff9f0"></div>
-        <p class="pp-swatch__label">90%<br>#fff9f0</p>
+        <div class="pp-swatch__color" style="--c: var(--cy-90)"></div>
+        <p class="pp-swatch__label">90%<br>--cy-90</p>
       </div>
     </div>
   </section>
@@ -330,28 +330,28 @@ url: /paleta-295/
     <h2 class="pp-heading">Sombras del texto — Dull Violet Black</h2>
     <div class="pp-scale">
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #1e0e3f"></div>
-        <p class="pp-swatch__label">0%<br>#1e0e3f</p>
+        <div class="pp-swatch__color" style="--c: var(--dvb-0)"></div>
+        <p class="pp-swatch__label">0%<br>--dvb-0</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #1b0d39"></div>
-        <p class="pp-swatch__label">10%<br>#1b0d39</p>
+        <div class="pp-swatch__color" style="--c: var(--dvb-10)"></div>
+        <p class="pp-swatch__label">10%<br>--dvb-10</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #180b32"></div>
-        <p class="pp-swatch__label">20%<br>#180b32</p>
+        <div class="pp-swatch__color" style="--c: var(--dvb-20)"></div>
+        <p class="pp-swatch__label">20%<br>--dvb-20</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #150a2c"></div>
-        <p class="pp-swatch__label">30%<br>#150a2c</p>
+        <div class="pp-swatch__color" style="--c: var(--dvb-30)"></div>
+        <p class="pp-swatch__label">30%<br>--dvb-30</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #120826"></div>
-        <p class="pp-swatch__label">40%<br>#120826</p>
+        <div class="pp-swatch__color" style="--c: var(--dvb-40)"></div>
+        <p class="pp-swatch__label">40%<br>--dvb-40</p>
       </div>
       <div class="pp-swatch">
-        <div class="pp-swatch__color" style="--c: #0f0720"></div>
-        <p class="pp-swatch__label">50%<br>#0f0720</p>
+        <div class="pp-swatch__color" style="--c: var(--dvb-50)"></div>
+        <p class="pp-swatch__label">50%<br>--dvb-50</p>
       </div>
     </div>
   </section>
@@ -361,9 +361,8 @@ url: /paleta-295/
     <h2 class="pp-heading">Combinaciones — modo claro</h2>
     <div class="pp-combos">
 
-      <!-- 1. Wada puro -->
       <div class="pp-combo">
-        <div class="pp-combo__preview" style="--bg: #fdbf68; --fg: #1e0e3f">
+        <div class="pp-combo__preview" style="--bg: var(--cy-0); --fg: var(--dvb-0)">
           <p class="pp-combo__h">Título de muestra — Wada puro</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -371,15 +370,14 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Wada puro</p>
-          <p class="pp-combo__colors">bg #fdbf68 (0%)<br>text #1e0e3f (0%)</p>
+          <p class="pp-combo__colors">bg --cy-0<br>text --dvb-0</p>
           <p class="pp-combo__ratio">~11:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
       </div>
 
-      <!-- 2. Dorado suave -->
       <div class="pp-combo">
-        <div class="pp-combo__preview" style="--bg: #fedfb4; --fg: #1e0e3f">
+        <div class="pp-combo__preview" style="--bg: var(--cy-50); --fg: var(--dvb-0)">
           <p class="pp-combo__h">Título de muestra — Dorado suave</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -387,15 +385,14 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Dorado suave</p>
-          <p class="pp-combo__colors">bg #fedfb4 (50%)<br>text #1e0e3f (0%)</p>
+          <p class="pp-combo__colors">bg --cy-50<br>text --dvb-0</p>
           <p class="pp-combo__ratio">~13.5:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
       </div>
 
-      <!-- 3. Crema ★ -->
       <div class="pp-combo">
-        <div class="pp-combo__preview" style="--bg: #fee5c3; --fg: #1e0e3f">
+        <div class="pp-combo__preview" style="--bg: var(--cy-60); --fg: var(--dvb-0)">
           <p class="pp-combo__h">Título de muestra — Crema</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -403,16 +400,15 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Crema</p>
-          <p class="pp-combo__colors">bg #fee5c3 (60%)<br>text #1e0e3f (0%)</p>
+          <p class="pp-combo__colors">bg --cy-60<br>text --dvb-0</p>
           <p class="pp-combo__ratio">~14.5:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
           <p class="pp-combo__star">★ recomendada</p>
         </div>
       </div>
 
-      <!-- 4. Pergamino -->
       <div class="pp-combo">
-        <div class="pp-combo__preview" style="--bg: #feecd2; --fg: #1b0d39">
+        <div class="pp-combo__preview" style="--bg: var(--cy-70); --fg: var(--dvb-10)">
           <p class="pp-combo__h">Título de muestra — Pergamino</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -420,15 +416,14 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Pergamino</p>
-          <p class="pp-combo__colors">bg #feecd2 (70%)<br>text #1b0d39 (10%)</p>
+          <p class="pp-combo__colors">bg --cy-70<br>text --dvb-10</p>
           <p class="pp-combo__ratio">~15.5:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
       </div>
 
-      <!-- 5. Leche -->
       <div class="pp-combo">
-        <div class="pp-combo__preview" style="--bg: #fff2e1; --fg: #180b32">
+        <div class="pp-combo__preview" style="--bg: var(--cy-80); --fg: var(--dvb-20)">
           <p class="pp-combo__h">Título de muestra — Leche</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -436,15 +431,14 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Leche</p>
-          <p class="pp-combo__colors">bg #fff2e1 (80%)<br>text #180b32 (20%)</p>
+          <p class="pp-combo__colors">bg --cy-80<br>text --dvb-20</p>
           <p class="pp-combo__ratio">~17:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
       </div>
 
-      <!-- 6. 90/30 -->
       <div class="pp-combo">
-        <div class="pp-combo__preview" style="--bg: #fff9f0; --fg: #150a2c">
+        <div class="pp-combo__preview" style="--bg: var(--cy-90); --fg: var(--dvb-30)">
           <p class="pp-combo__h">Título de muestra — 90 / 30</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -452,7 +446,7 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">90 / 30</p>
-          <p class="pp-combo__colors">bg #fff9f0 (90%)<br>text #150a2c (30%)</p>
+          <p class="pp-combo__colors">bg --cy-90<br>text --dvb-30</p>
           <p class="pp-combo__ratio">~18:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
@@ -466,9 +460,8 @@ url: /paleta-295/
     <h2 class="pp-heading">Combinaciones — modo oscuro</h2>
     <div class="pp-combos">
 
-      <!-- dark 1. Wada puro -->
       <div class="pp-combo pp-combo--dark">
-        <div class="pp-combo__preview" style="--bg: #150a2c; --fg: #fdbf68">
+        <div class="pp-combo__preview" style="--bg: var(--dvb-30); --fg: var(--cy-0)">
           <p class="pp-combo__h">Título de muestra — Wada puro</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -476,15 +469,14 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Wada puro</p>
-          <p class="pp-combo__colors">bg #150a2c (30%)<br>text #fdbf68 (0%)</p>
+          <p class="pp-combo__colors">bg --dvb-30<br>text --cy-0</p>
           <p class="pp-combo__ratio">~11:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
       </div>
 
-      <!-- dark 2. Dorado suave -->
       <div class="pp-combo pp-combo--dark">
-        <div class="pp-combo__preview" style="--bg: #150a2c; --fg: #fedfb4">
+        <div class="pp-combo__preview" style="--bg: var(--dvb-30); --fg: var(--cy-50)">
           <p class="pp-combo__h">Título de muestra — Dorado suave</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -492,15 +484,14 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Dorado suave</p>
-          <p class="pp-combo__colors">bg #150a2c (30%)<br>text #fedfb4 (50%)</p>
+          <p class="pp-combo__colors">bg --dvb-30<br>text --cy-50</p>
           <p class="pp-combo__ratio">~13.5:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
       </div>
 
-      <!-- dark 3. Crema ★ -->
       <div class="pp-combo pp-combo--dark">
-        <div class="pp-combo__preview" style="--bg: #150a2c; --fg: #fee5c3">
+        <div class="pp-combo__preview" style="--bg: var(--dvb-30); --fg: var(--cy-60)">
           <p class="pp-combo__h">Título de muestra — Crema</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -508,16 +499,15 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Crema</p>
-          <p class="pp-combo__colors">bg #150a2c (30%)<br>text #fee5c3 (60%)</p>
+          <p class="pp-combo__colors">bg --dvb-30<br>text --cy-60</p>
           <p class="pp-combo__ratio">~14.5:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
           <p class="pp-combo__star">★ recomendada</p>
         </div>
       </div>
 
-      <!-- dark 4. Pergamino -->
       <div class="pp-combo pp-combo--dark">
-        <div class="pp-combo__preview" style="--bg: #120826; --fg: #feecd2">
+        <div class="pp-combo__preview" style="--bg: var(--dvb-40); --fg: var(--cy-70)">
           <p class="pp-combo__h">Título de muestra — Pergamino</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -525,15 +515,14 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Pergamino</p>
-          <p class="pp-combo__colors">bg #120826 (40%)<br>text #feecd2 (70%)</p>
+          <p class="pp-combo__colors">bg --dvb-40<br>text --cy-70</p>
           <p class="pp-combo__ratio">~15.5:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
       </div>
 
-      <!-- dark 5. Leche -->
       <div class="pp-combo pp-combo--dark">
-        <div class="pp-combo__preview" style="--bg: #0f0720; --fg: #fff2e1">
+        <div class="pp-combo__preview" style="--bg: var(--dvb-50); --fg: var(--cy-80)">
           <p class="pp-combo__h">Título de muestra — Leche</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -541,15 +530,14 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">Leche</p>
-          <p class="pp-combo__colors">bg #0f0720 (50%)<br>text #fff2e1 (80%)</p>
+          <p class="pp-combo__colors">bg --dvb-50<br>text --cy-80</p>
           <p class="pp-combo__ratio">~17:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
       </div>
 
-      <!-- dark 6. 90/30 -->
       <div class="pp-combo pp-combo--dark">
-        <div class="pp-combo__preview" style="--bg: #0f0720; --fg: #fff9f0">
+        <div class="pp-combo__preview" style="--bg: var(--dvb-50); --fg: var(--cy-90)">
           <p class="pp-combo__h">Título de muestra — 90 / 30</p>
           <p class="pp-combo__p">La música llega antes que las palabras. Este párrafo muestra cómo se lee texto corrido sobre el fondo original de la paleta.</p>
           <p class="pp-combo__caption">Caption en letra pequeña — referencia visual</p>
@@ -557,7 +545,7 @@ url: /paleta-295/
         </div>
         <div class="pp-combo__meta">
           <p class="pp-combo__name">90 / 30</p>
-          <p class="pp-combo__colors">bg #0f0720 (50%)<br>text #fff9f0 (90%)</p>
+          <p class="pp-combo__colors">bg --dvb-50<br>text --cy-90</p>
           <p class="pp-combo__ratio">~18:1</p>
           <span class="pp-combo__wcag pp-combo__wcag--aaa">AAA</span>
         </div>
@@ -575,9 +563,9 @@ url: /paleta-295/
         <p class="pp-extra__label">Acción — Yellow</p>
         <button class="pp-action__btn" type="button">Acción de muestra</button>
         <p class="pp-extra__note">
-          <span class="pp-extra__hex">#fff200</span> — Yellow<br>
+          <span class="pp-extra__hex">--wada-yellow</span><br>
           Para botones y elementos de acción.<br>
-          Texto en Dull Violet Black para contraste.
+          Texto en --dvb-0 para contraste.
         </p>
       </div>
 
@@ -589,7 +577,7 @@ url: /paleta-295/
           <div class="pp-blue__border">Cita o bloque destacado</div>
         </div>
         <p class="pp-extra__note">
-          <span class="pp-extra__hex">#006eb8</span> — Blue<br>
+          <span class="pp-extra__hex">--wada-blue</span><br>
           Acento secundario: bordes, citas,<br>
           links sobre fondo violeta oscuro.
         </p>

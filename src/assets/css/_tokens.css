@@ -31,36 +31,36 @@
 :root {
   /* ── Escala primitiva — Sanzo Wada Classic #295 ── */
 
-  /* Cream Yellow (#fdbf68) — tintes hacia blanco */
+  /* Cream Yellow — base + tintes hacia blanco (cambiar solo --cy-0) */
   --cy-0:  #fdbf68;
-  --cy-10: #fdc577;
-  --cy-20: #fdcc86;
-  --cy-30: #fed295;
-  --cy-40: #fed9a4;
-  --cy-50: #fedfb4;
-  --cy-60: #fee5c3;
-  --cy-70: #feecd2;
-  --cy-80: #fff2e1;
-  --cy-90: #fff9f0;
+  --cy-10: color-mix(in srgb, var(--cy-0) 90%, white);
+  --cy-20: color-mix(in srgb, var(--cy-0) 80%, white);
+  --cy-30: color-mix(in srgb, var(--cy-0) 70%, white);
+  --cy-40: color-mix(in srgb, var(--cy-0) 60%, white);
+  --cy-50: color-mix(in srgb, var(--cy-0) 50%, white);
+  --cy-60: color-mix(in srgb, var(--cy-0) 40%, white);
+  --cy-70: color-mix(in srgb, var(--cy-0) 30%, white);
+  --cy-80: color-mix(in srgb, var(--cy-0) 20%, white);
+  --cy-90: color-mix(in srgb, var(--cy-0) 10%, white);
 
-  /* Dull Violet Black (#1e0e3f) — sombras hacia negro */
+  /* Dull Violet Black — base + sombras hacia negro (cambiar solo --dvb-0) */
   --dvb-0:  #1e0e3f;
-  --dvb-10: #1b0d39;
-  --dvb-20: #180b32;
-  --dvb-30: #150a2c;
-  --dvb-40: #120826;
-  --dvb-50: #0f0720;
+  --dvb-10: color-mix(in srgb, var(--dvb-0) 90%, black);
+  --dvb-20: color-mix(in srgb, var(--dvb-0) 80%, black);
+  --dvb-30: color-mix(in srgb, var(--dvb-0) 70%, black);
+  --dvb-40: color-mix(in srgb, var(--dvb-0) 60%, black);
+  --dvb-50: color-mix(in srgb, var(--dvb-0) 50%, black);
 
   /* Colores fijos de paleta */
   --wada-yellow: #fff200;
   --wada-blue:   #006eb8;
 
   /* ── Tokens semánticos ── */
-  --color-bg:         var(--cy-70);
+  --color-bg:         var(--cy-60);
   --color-surface:    var(--cy-60);
   --color-border:     var(--cy-60);
   --color-text:       var(--dvb-0);
-  --color-text-muted: #625270; /* DVB aclarado 30% hacia --cy-80 */
+  --color-text-muted: color-mix(in srgb, var(--dvb-0) 70%, var(--cy-80));
   --color-accent:     var(--wada-blue);
 
   /* Tipografia */
