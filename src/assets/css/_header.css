@@ -39,6 +39,12 @@
   }
 }
 
+.site-nav__link--active {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
 /* ─── Comutador de idioma ─── */
 
 .lang-switcher {
@@ -58,6 +64,9 @@
 .lang-switcher__item--active {
   color: var(--color-text);
   cursor: default;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 .lang-switcher__item:not(.lang-switcher__item--active):hover {

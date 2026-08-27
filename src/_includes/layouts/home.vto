@@ -14,11 +14,11 @@ layout: layouts/base.vto
       {{ for post of posts }}
         {{ set thumbSrc = post.thumbnail || null }}
         <li class="post-list__item">
-          <article class="post-card{{ thumbSrc ? " post-card--with-thumb" : "" }}">
+          <article class="post-card">
             {{ if thumbSrc }}
               <img
                 class="post-card__thumbnail"
-                src="/assets/images/{{ thumbSrc }}"
+                src="{{ thumbSrc |> resolveImageSrc }}"
                 alt=""
                 loading="lazy"
               >

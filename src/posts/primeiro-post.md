@@ -4,7 +4,7 @@ date: 2025-08-18
 slug: bem-vindo
 description: O blogue começa aqui.
 translationKey: welcome-post
-thumbnail: welcome-post/cover.svg
+thumbnail: welcome-post/fillas.jpg
 ---
 
 Este é o primeiro post do Uso Ritual.

@@ -21,12 +21,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .post-card--with-thumb {
-    grid-template-columns: 1fr 56px;
-  }
-
-  .post-card__thumbnail {
-    width: 56px;
-    height: 56px;
+  .post-list {
+    grid-template-columns: 1fr;
   }
 }

@@ -12,6 +12,7 @@ import {
   renderPostImage,
   renderPostQuote,
   renderPostVideo,
+  resolveImageSrc,
 } from "./media_shortcodes.ts";
 
 const site = lume({
@@ -95,6 +96,7 @@ site.filter("formatDate", (value: Date, lang: string) => {
 // Markup source of truth: src/_includes/partials/post-media.vto (mirrored in media_shortcodes.ts).
 // Raster image src: JPG/JPEG/PNG → .webp via resolveImageSrc (transform_images); SVG unchanged.
 
+site.filter("resolveImageSrc", resolveImageSrc);
 site.filter("postImage", renderPostImage);
 site.filter("postVideo", renderPostVideo);
 site.filter("postAudio", renderPostAudio);

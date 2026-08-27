@@ -1,8 +1,8 @@
 .post-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xl);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl) var(--space-lg);
 }
 
 .post-card__link {
@@ -15,36 +15,24 @@
 }
 
 .post-card__title {
-  font-size: 1.25rem;
   font-weight: normal;
-  line-height: 1.3;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0;
 }
 
 .post-card__date {
   display: block;
-  font-family: var(--font-ui);
-  font-size: 0.8125rem;
-  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-small);
+  margin-bottom: var(--baseline);
 }
 
 .post-card__excerpt {
-  font-size: 0.9375rem;
-}
-
-/* ─── Thumbnail na home ─── */
-
-.post-card--with-thumb {
-  display: grid;
-  grid-template-columns: 1fr 72px;
-  gap: var(--space-md);
-  align-items: start;
+  font-size: var(--font-size-caption);
 }
 
 .post-card__thumbnail {
-  width: 72px;
-  height: 72px;
+  width: 100%;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
-  grid-row: 1 / 4;
-  grid-column: 2;
+  display: block;
+  margin-bottom: calc(var(--baseline) / 2);
 }
