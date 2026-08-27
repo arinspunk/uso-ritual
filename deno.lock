@@ -38,6 +38,7 @@
     "npm:markdown-it-deflist@3.0.0": "3.0.0",
     "npm:markdown-it@14.1.0": "14.1.0",
     "npm:meriyah@4.5.0": "4.5.0",
+    "npm:napi-wasm@1.0.1": "1.0.1",
     "npm:sharp@0.33.5": "0.33.5",
     "npm:svg2png-wasm@1.4.1": "1.4.1"
   },
@@ -351,6 +352,9 @@
     "meriyah@4.5.0": {
       "integrity": "sha512-Rbiu0QPIxTXgOXwiIpRVJfZRQ2FWyfzYrOGBs9SN5RbaXg1CN5ELn/plodwWwluX93yzc4qO/bNIen1ThGFCxw=="
     },
+    "napi-wasm@1.0.1": {
+      "integrity": "sha512-70Ks5fMTw5/5iZJg8dtyivwPP9tgyeLRHGa2j4GlFOjz4lWbbTWrDAvSeJlQg+o++cWpX2bSPGI1Hu4W2kbOoA=="
+    },
     "punycode.js@2.3.1": {
       "integrity": "sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA=="
     },
@@ -644,5 +648,10 @@
     "https://deno.land/x/xml@5.4.16/parse.ts": "af704c72d42607d5b3f364972c413e05b6d2921d164806ec47aee348cf6ce49c",
     "https://deno.land/x/xml@5.4.16/stringify.ts": "a00881a1e563902538cfea8ce31464c81e98e61dddcf718039d7118b46464687",
     "https://deno.land/x/xml@5.4.16/wasm_xml_parser/wasm_xml_parser.js": "7ec301b1db7d11671f4f8785505c6f617ea05fcb3d558686c67efad263ea0c8e"
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:napi-wasm@1.0.1"
+    ]
   }
 }

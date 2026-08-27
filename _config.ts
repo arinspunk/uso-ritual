@@ -3,6 +3,8 @@ import multilanguage from "lume/plugins/multilanguage.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
 import transformImages from "lume/plugins/transform_images.ts";
+// Pin npm:napi-wasm so LightningCSS resolves on Netlify (Deno does not hoist nested deps).
+import "napi-wasm";
 import lightningCss from "lume/plugins/lightningcss.ts";
 import {
   renderPostAudio,

@@ -1,5 +1,5 @@
 [build]
-  command = "deno task build"
+  command = "deno install && deno task build"
   publish = "_site"
 
 [build.environment]

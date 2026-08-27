@@ -6,6 +6,7 @@
     "serve": "deno task lume -- -s"
   },
   "imports": {
-    "lume/": "https://deno.land/x/lume@v2.3.3/"
+    "lume/": "https://deno.land/x/lume@v2.3.3/",
+    "napi-wasm": "npm:napi-wasm@1.0.1"
   }
 }
