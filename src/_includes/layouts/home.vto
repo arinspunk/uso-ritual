@@ -16,12 +16,14 @@ layout: layouts/base.vto
         <li class="post-list__item">
           <article class="post-card">
             {{ if thumbSrc }}
-              <img
-                class="post-card__thumbnail"
-                src="{{ thumbSrc |> resolveImageSrc }}"
-                alt=""
-                loading="lazy"
-              >
+              <div class="post-card__media">
+                <img
+                  class="post-card__thumbnail"
+                  src="{{ thumbSrc |> resolveImageSrc }}"
+                  alt=""
+                  loading="lazy"
+                >
+              </div>
             {{ /if }}
             <a class="post-card__link" href="{{ post.url }}">
               <h2 class="post-card__title">{{ post.title }}</h2>
