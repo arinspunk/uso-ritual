@@ -2,3 +2,4 @@ _site/
 _cache/
 .cache/
 .deno/
+node_modules/
