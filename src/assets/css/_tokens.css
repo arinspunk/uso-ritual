@@ -70,11 +70,17 @@
   --font-size-base: 1rem; /* 16px mobile */
   --font-size-h1-ratio: 1.3125; /* 21px at 16px base — traditional scale */
   --font-size-h1: calc(1rem * var(--font-size-h1-ratio));
-  --font-size-caption: 0.875rem; /* 14px at 16px base — traditional scale */
-  --font-size-small: 0.75rem; /* 12px at 16px base — traditional scale */
+  --font-size-caption-ratio: 0.875; /* 14px at 16px base — traditional scale */
+  --font-size-caption: calc(1rem * var(--font-size-caption-ratio));
+  --font-size-small-ratio: 0.75; /* 12px at 16px base — traditional scale */
+  --font-size-small: calc(1rem * var(--font-size-small-ratio));
   --line-height: 1.5;
   --line-height-h1: calc(var(--line-height) / var(--font-size-h1-ratio)); /* 1 line = 1 baseline */
-  --baseline: calc(var(--line-height) * 1em);
+  --line-height-caption: calc(var(--line-height) / var(--font-size-caption-ratio)); /* 1 line = 1 baseline */
+  --line-height-small: calc(var(--line-height) / (2 * var(--font-size-small-ratio))); /* 2 lines = 1 baseline */
+  --baseline:         calc(var(--line-height) * 1rem); /* 24px at 16px root — 1 grid unit  */
+  --baseline-half:    calc(var(--baseline) / 2);        /* 12px — ½ grid unit                */
+  --baseline-quarter: calc(var(--baseline) / 4);         /*  6px — ¼ grid unit                */
 
   /* Espaçamento */
   --space-xs:  0.25rem;

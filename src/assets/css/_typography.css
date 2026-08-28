@@ -21,7 +21,7 @@ blockquote {
 
   p {
     font-style: italic;
-    line-height: 1.5;
+    line-height: var(--line-height);
     margin-bottom: 0;
   }
 
@@ -30,6 +30,7 @@ blockquote {
     font-family: var(--font-ui);
     font-size: var(--font-size-caption);
     font-style: normal;
+    line-height: var(--line-height-caption);
     margin-top: var(--space-xs);
   }
 }

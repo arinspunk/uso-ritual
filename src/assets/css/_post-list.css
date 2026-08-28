@@ -39,11 +39,14 @@
 .post-card__date {
   display: block;
   font-size: var(--font-size-small);
-  margin-bottom: var(--baseline);
+  line-height: var(--line-height-small);
+  margin-top: var(--baseline-quarter);
 }
 
 .post-card__excerpt {
   font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  margin-top: calc(var(--baseline-half) + var(--baseline-quarter)); /* para meia linha mais:   margin-top: calc(var(--baseline) + var(--baseline-quarter)); */
 }
 
 .post-card__media {
