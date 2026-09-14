@@ -11,6 +11,7 @@
   --sketch-stroke-width: 10;
   --sketch-duration-circle: 350;
   --sketch-duration-zigzag: 600;
+  --sketch-offset-y: -4rem;
 }
 
 .post-card__link {
@@ -29,7 +30,7 @@
 
 .post-card__sketch {
   position: absolute;
-  top: 0;
+  top: var(--sketch-offset-y);
   left: 0;
   width: 100%;
   height: 100%;

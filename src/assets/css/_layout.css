@@ -3,3 +3,16 @@
   width: 100%;
   padding: calc(var(--baseline) * 3) var(--gutter);
 }
+
+body.page-exit .site-header,
+body.page-exit .main {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-exit .site-header,
+  body.page-exit .main {
+    transition: none;
+  }
+}
