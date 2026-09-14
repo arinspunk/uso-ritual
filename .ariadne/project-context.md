@@ -4,10 +4,10 @@
 
 ## Stack
 - Runtime: Deno 2.9.5 (local) / 2.1.0 (Netlify, pinned in `netlify.toml`)
-- Framework: Lume v2.3.3 (SSG) — plugins: `multilanguage`, `date`, `feed`
+- Framework: Lume v2.3.3 (SSG) — plugins: `multilanguage`, `date`, `feed`, `lightningcss`, `transform_images`
 - DB/ORM: none
 - Auth: none
-- Styling: hand-written CSS — single file `src/assets/css/main.css`, no framework, no CDN
+- Styling: hand-written CSS — `src/assets/css/main.css` imports 12 partial `_*.css` files; processed by LightningCSS <!-- updated -->
 - Testing: none
 
 ## Structure
@@ -17,12 +17,16 @@
 - `src/_data/i18n.yml` → PT UI strings (nav labels, URLs, feed title)
 - `src/en/_data/i18n.yml` → EN UI strings
 - `src/_includes/layouts/` → Vento (`.vto`) layout templates: `base`, `home`, `page`, `post`
-- `src/_includes/partials/` → `header.vto`, `footer.vto` — included in `base.vto`
+- `src/_includes/partials/` → `header.vto`, `footer.vto`, `post-media.vto` — included in layout templates
 - `src/posts/` → PT posts; `_data.yml` sets `type: post` + `layout: layouts/post.vto`
 - `src/en/posts/` → EN posts; same `_data.yml` pattern
-- `src/assets/css/main.css` → served as static asset via `site.copy("assets")` in `_config.ts`
-- `_config.ts` → Lume entry point; plugins, preprocess hook, custom `formatDate` filter, `site.copy`
-- `deno.json` → task runner (`build`, `serve`, `lume`); import map for Lume
+- `src/assets/css/main.css` → CSS entry point; `@import`s `_tokens`, `_reset`, `_typography`, `_layout`, `_page-body`, `_header`, `_footer`, `_post-list`, `_post`, `_post-media`, `_buttons`, `_responsive` <!-- updated -->
+- `src/assets/css/_tokens.css` → all CSS custom properties: fonts (`@font-face`), color scale, semantic tokens, typography, spacing, layout <!-- updated -->
+- `src/assets/fonts/` → self-hosted font files; copied to build via `site.copy("assets/fonts")` <!-- updated -->
+- `src/assets/images/` → post media; `_data.yml` triggers `transform_images` (JPG/PNG → WebP) <!-- updated -->
+- `media_shortcodes.ts` → shortcode render helpers imported by `_config.ts`; HTML output mirrors `post-media.vto` <!-- updated -->
+- `_config.ts` → Lume entry point; plugins, preprocess hook, custom `formatDate` filter, shortcode filters, `site.copy`, `site.loadAssets`
+- `deno.json` → task runner (`build`, `serve`, `lume`); import map for Lume + `napi-wasm`
 - `netlify.toml` → build command `deno task build`, publish `_site`, Deno version pin
 - `_site/` → build output — never edit manually, never commit
 
@@ -44,7 +48,7 @@
 
 ### Frontmatter — Posts
 Required fields: `title`, `date` (ISO 8601), `slug`, `description`, `translationKey`
-Optional field: `lang` (inherited from `_data.yml` — do not set manually unless overriding)
+Optional fields: `lang` (inherited from `_data.yml`), `thumbnail` (filename under `src/assets/images/`, no path prefix)
 - `type: post` is set by `src/posts/_data.yml` / `src/en/posts/_data.yml` — never repeat in individual files
 - `layout: layouts/post.vto` is set by the same `_data.yml` — never repeat in individual files
 
@@ -59,13 +63,43 @@ Required fields: `title`, `layout` (explicit), `slug`, `translationKey`
 - Pipe filters: `value |> filterName(args)` — e.g. `date |> date('yyyy-MM-dd')`, `date |> formatDate(lang)`
 - NEVER use Nunjucks `{%` / `%}` syntax
 
-### CSS
-- ALWAYS: use CSS custom properties defined in `:root` — never hardcode color or spacing values
+### CSS <!-- updated -->
+- ALWAYS: define all tokens in `src/assets/css/_tokens.css` `:root` block — never hardcode color, spacing, or font values elsewhere
 - ALWAYS: BEM-like class naming — `block__element--modifier`
 - NEVER: load any CSS from CDN at runtime — no `@import url(...)`, no Google Fonts remote
 - NEVER: add Tailwind, Bootstrap, or any utility framework
-- Max content width: `720px` (`--max-width`), gutter: `clamp(1rem, 5vw, 2.5rem)`
-- Body font: `Georgia, serif` (`--font-body`); UI font: `system-ui, sans-serif` (`--font-ui`)
+- ALWAYS: add new CSS partials as `_name.css` files and register them with `@import` in `main.css`
+- LightningCSS is active — CSS nesting and modern syntax are supported; no PostCSS needed
+- Max content width: `720px` (`--max-width`), gutter: `clamp(1rem, 5vw, 2.5rem)` (`--gutter`)
+- Body font: `'Novela', Georgia, serif` (`--font-body`); UI font: `'Isaac', system-ui, sans-serif` (`--font-ui`) <!-- updated -->
+- Font files must be self-hosted in `src/assets/fonts/` and declared via `@font-face` in `_tokens.css` <!-- updated -->
+
+### CSS — Token System <!-- updated -->
+- Color scale: `--cy-{0–90}` (Cream Yellow tints) and `--dvb-{0–50}` (Dull Violet Black shades) — only change the base `--cy-0` / `--dvb-0` hex values, tints/shades are derived via `color-mix()`
+- Fixed palette colors: `--wada-yellow` (#fff200), `--wada-blue` (#006eb8)
+- Semantic tokens: `--color-bg`, `--color-surface`, `--color-border`, `--color-text`, `--color-text-muted`, `--color-accent` — ALWAYS use these in components, never the primitive scale directly
+- Typography tokens: `--font-size-base` (responsive via media queries), `--font-size-h1`, `--font-size-caption`, `--font-size-small` — ALWAYS use these, never raw `px` or `rem` literals for font sizes
+- Line-height tokens: `--line-height`, `--line-height-h1`, `--line-height-caption`, `--line-height-small` — paired with their font-size counterparts
+- Baseline grid tokens (rem-based, fully responsive): `--baseline` (1 grid unit), `--baseline-half` (½), `--baseline-quarter` (¼) — NEVER use `em`-based spacing for block-level rhythm
+- Spacing scale (rem, fixed): `--space-xs` (0.25), `--space-sm` (0.5), `--space-md` (1), `--space-lg` (1.75), `--space-xl` (3), `--space-2xl` (5) — use for inline/component spacing, use baseline grid for vertical rhythm between blocks
+
+### Media Shortcodes <!-- updated -->
+Locked author syntax (Vento pipe filters):
+- `{{ "src" |> postImage("alt", "caption?", "wide|full|text?") }}`
+- `{{ "url" |> postVideo("caption?", "wide|full|text?") }}`
+- `{{ "url" |> postAudio("caption?") }}`
+- `{{ "src|alt|cap" |> postGallery("src|alt|cap", ...) }}`
+- `{{ "text" |> postQuote("attribution?") }}`
+- ALWAYS: pass image `src` as filename only (no path) — `resolveImageSrc` prepends `/assets/images/` and converts JPG/PNG → `.webp`; SVG is unchanged
+- ALWAYS: keep `media_shortcodes.ts` and `src/_includes/partials/post-media.vto` in sync — both are sources of truth for HTML structure
+- Size values: `wide` (default, breakout past text column), `full` (full viewport), `text` (constrained to text column)
+- NEVER call `resolveImageSrc` directly in post content — use `postImage` or `postGallery`
+
+### Image Handling <!-- updated -->
+- `transform_images` plugin is active — JPG, JPEG, PNG in `src/assets/images/` are converted to WebP at build time
+- `src/assets/images/_data.yml` contains `transformImages: { format: webp }` — do not remove
+- SVG files: loaded via `site.loadAssets([".svg"])` — not transformed, served as-is
+- `resolveImageSrc(src)` helper: strips leading `/`, replaces `.jpg/.jpeg/.png` → `.webp`, prepends `/assets/images/`
 
 ### RSS Feeds
 - PT feed: `/pt/feed.xml` — query `lang=pt type=post`
@@ -82,6 +116,7 @@ Required fields: `title`, `layout` (explicit), `slug`, `translationKey`
 - Publish directory: `_site`
 - Deno version in Netlify: `2.1.0` (pinned — update `netlify.toml` if upgrading)
 - `location` in `_config.ts` must match the production domain before first deploy
+- `napi-wasm` npm dep is pinned in `deno.json` — required for LightningCSS to resolve on Netlify (Deno does not hoist nested deps) <!-- updated -->
 
 ## Hard Constraints
 - No new npm/CDN dependencies — this is a Deno/Lume project; add imports only via `deno.json` import map
@@ -89,3 +124,4 @@ Required fields: `title`, `layout` (explicit), `slug`, `translationKey`
 - `_site/` must never be committed — build artifact only
 - No CSS loaded at runtime from external sources
 - No auto language detection / redirect at the server level
+- Font files must live in `src/assets/fonts/` and be declared with `@font-face` in `_tokens.css` — never load from Google Fonts or any CDN <!-- updated -->

@@ -2,9 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
-  padding: var(--space-md) var(--gutter);
+  background: transparent;
+  padding: var(--space-sm) var(--gutter);
 }
 
 .site-header__inner {
@@ -22,7 +21,7 @@
 }
 
 .site-header__logo-img {
-  height: 2rem;
+  height: 50px;
   width: auto;
   display: block;
 }

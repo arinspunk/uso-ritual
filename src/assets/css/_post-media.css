@@ -24,9 +24,9 @@
 .media__caption {
   display: block;
   font-family: var(--font-body);
-  font-size: var(--font-size-small);
-  margin-top: var(--space-sm);
-  line-height: var(--line-height-small);
+  font-size: var(--font-size-caption);
+  margin-top: var(--baseline-quarter);
+  line-height: var(--line-height-caption);
   text-align: right;
 }
 
@@ -49,7 +49,7 @@
 .post-gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-sm);
+  gap: var(--baseline);
 }
 
 .post-gallery__item {

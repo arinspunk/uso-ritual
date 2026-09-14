@@ -105,6 +105,7 @@ site.filter("postQuote", renderPostQuote);
 
 site.use(lightningCss());
 site.copy("assets/fonts");
+site.copy("assets/js");
 site.loadAssets([".svg"]);
 site.use(transformImages());
 

@@ -7,6 +7,10 @@
 
 .post-card {
   position: relative;
+  --sketch-color: var(--color-accent);
+  --sketch-stroke-width: 10;
+  --sketch-duration-circle: 350;
+  --sketch-duration-zigzag: 600;
 }
 
 .post-card__link {
@@ -23,12 +27,22 @@
   }
 }
 
-.post-card:hover .post-card__title {
-  color: var(--color-accent);
+.post-card__sketch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.post-card:hover .post-card__thumbnail {
-  transform: scale(1.07);
+.post-card:hover .post-card__sketch {
+  opacity: 1;
 }
 
 .post-card__title {
@@ -70,5 +84,9 @@
 
   .post-card:hover .post-card__thumbnail {
     transform: none;
+  }
+
+  .post-card__sketch {
+    transition: none;
   }
 }

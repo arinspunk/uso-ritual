@@ -3,3 +3,4 @@ _cache/
 .cache/
 .deno/
 node_modules/
+*.psd

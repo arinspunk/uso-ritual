@@ -30,6 +30,7 @@
 > **Done when:** `_tokens.css` contains `--baseline-quarter` and no longer contains `--baseline-small`. Verify with a search for `--baseline-small` → zero results.
 > **Date completed:** 2026-08-28
 > **Work done:** Replaced lines 81–82 in `_tokens.css`. Removed `--baseline` (em-based) and `--baseline-small` (dimensionless). Added `--baseline`, `--baseline-half`, `--baseline-quarter` using `rem`. Zero occurrences of `--baseline-small` remain in the file.
+> **Commit:** `31db512` refactor(css): make baseline spacing rem-based and explicit
 
 ---
 
@@ -45,6 +46,7 @@
 > **Done when:** `.post-card__date` rule contains `var(--baseline-quarter)` in both `margin-top` and `margin-bottom`, and the string `--baseline-small` no longer appears in `_post-list.css`.
 > **Date completed:** 2026-08-28
 > **Work done:** Replaced `margin-top: calc(var(--baseline-small) * 0.5em)` → `var(--baseline-quarter)` and `margin-bottom: var(--baseline)` → `calc(var(--baseline-half) + var(--baseline-quarter))` in `_post-list.css`. Zero occurrences of `--baseline-small` remain.
+> **Commit:** `31db512` refactor(css): make baseline spacing rem-based and explicit
 
 ---
 

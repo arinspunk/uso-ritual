@@ -44,7 +44,7 @@
   --cy-90: color-mix(in srgb, var(--cy-0) 10%, white);
 
   /* Dull Violet Black — base + sombras hacia negro (cambiar solo --dvb-0) */
-  --dvb-0:  #1e0e3f;
+  --dvb-0:  #2e0e3f;
   --dvb-10: color-mix(in srgb, var(--dvb-0) 90%, black);
   --dvb-20: color-mix(in srgb, var(--dvb-0) 80%, black);
   --dvb-30: color-mix(in srgb, var(--dvb-0) 70%, black);
@@ -54,14 +54,15 @@
   /* Colores fijos de paleta */
   --wada-yellow: #fff200;
   --wada-blue:   #006eb8;
+  --wada-pink:   #FF0090;
 
   /* ── Tokens semánticos ── */
-  --color-bg:         var(--cy-70);
+  --color-bg:         var(--cy-60);
   --color-surface:    var(--cy-60);
   --color-border:     var(--cy-60);
   --color-text:       var(--dvb-0);
   --color-text-muted: color-mix(in srgb, var(--dvb-0) 70%, var(--cy-80));
-  --color-accent:     var(--wada-blue);
+  --color-accent:     var(--wada-pink);
 
   /* Tipografia */
   --font-body: 'Novela', Georgia, serif;
