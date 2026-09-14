@@ -63,6 +63,21 @@ function initSketch(card) {
   mediaEl.insertAdjacentElement("afterend", svg);
 
   let lastIndex = -1;
+  let sketchStartTime = 0;
+  let sketchDuration = 0;
+
+  if (isTouch && !reducedMotion) {
+    const link = card.querySelector(".post-card__link");
+    if (link) {
+      link.addEventListener("click", (e) => {
+        const remaining = sketchDuration - (Date.now() - sketchStartTime);
+        if (remaining > 50) {
+          e.preventDefault();
+          setTimeout(() => { window.location.href = link.href; }, remaining);
+        }
+      });
+    }
+  }
 
   card.addEventListener("mouseenter", () => {
     let i;
@@ -80,6 +95,9 @@ function initSketch(card) {
     const color = style.getPropertyValue("--sketch-color").trim() || "currentColor";
     const strokeWidth = parseFloat(style.getPropertyValue("--sketch-stroke-width")) || 2;
     const duration = parseFloat(style.getPropertyValue(`--sketch-duration-${type}`)) || (type === "circle" ? 350 : 600);
+
+    sketchDuration = duration;
+    sketchStartTime = Date.now();
 
     svg.innerHTML = "";
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -105,6 +123,8 @@ function initSketch(card) {
     }
   });
 }
+
+const isTouch = matchMedia("(hover: none)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".post-card").forEach(initSketch);
