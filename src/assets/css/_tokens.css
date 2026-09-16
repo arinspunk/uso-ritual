@@ -32,7 +32,7 @@
   /* ── Escala primitiva — Sanzo Wada Classic #295 ── */
 
   /* Cream Yellow — base + tintes hacia blanco (cambiar solo --cy-0) */
-  --cy-0:  #fdbf68;
+  --cy-0:  #FF0090;
   --cy-10: color-mix(in srgb, var(--cy-0) 90%, white);
   --cy-20: color-mix(in srgb, var(--cy-0) 80%, white);
   --cy-30: color-mix(in srgb, var(--cy-0) 70%, white);
@@ -57,7 +57,7 @@
   --wada-pink:   #FF0090;
 
   /* ── Tokens semánticos ── */
-  --color-bg:         var(--cy-60);
+  --color-bg:         var(--cy-90);
   --color-surface:    var(--cy-60);
   --color-border:     var(--cy-60);
   --color-text:       var(--dvb-0);

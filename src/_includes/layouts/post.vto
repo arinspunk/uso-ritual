@@ -13,13 +13,4 @@ layout: layouts/base.vto
     {{ content }}
   </div>
 
-  {{ if alternates && alternates.length > 1 }}
-    <nav class="post__translations" aria-label="{{ i18n.lang_label }}">
-      {{ for alt of alternates }}
-        {{ if alt.lang !== lang }}
-          <a href="{{ alt.url }}" lang="{{ alt.lang }}" hreflang="{{ alt.lang }}">{{ alt.lang }}</a>
-        {{ /if }}
-      {{ /for }}
-    </nav>
-  {{ /if }}
 </article>

@@ -62,6 +62,7 @@
   font-size: var(--font-size-caption);
   line-height: var(--line-height-caption);
   margin-top: calc(var(--baseline-half) + var(--baseline-quarter)); /* para meia linha mais:   margin-top: calc(var(--baseline) + var(--baseline-quarter)); */
+  margin-bottom: 0;
 }
 
 .post-card__media {

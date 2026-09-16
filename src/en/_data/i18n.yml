@@ -6,4 +6,7 @@ nav:
   contacto: Contact
   contacto_url: /en/contact/
 lang_label: Language
+langs:
+  pt: Galego (pt)
+  en: English
 feed_title: RSS Feed
