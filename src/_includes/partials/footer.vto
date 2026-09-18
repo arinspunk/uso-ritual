@@ -4,7 +4,7 @@
       <a class="site-footer__link" href="{{ i18n.nav.home_url }}">Uso Ritual</a> © {{ new Date().getFullYear() }}
     </p>
     <nav class="site-footer__nav" aria-label="{{ i18n.nav_label || 'Navegação' }}">
-      <a class="site-footer__link" href="/{{ lang }}/feed.xml">{{ i18n.feed_title }}</a>
+      <a class="site-footer__link" href="/{{ lang }}/feed.xml" target="_blank" rel="noopener">{{ i18n.feed_title }}</a>
       <!-- <a class="site-footer__link" href="{{ i18n.nav.sobre_url }}" {{ if url === i18n.nav.sobre_url }}aria-current="page"{{ /if }}>{{ i18n.nav.sobre }}</a>
       <a class="site-footer__link" href="{{ i18n.nav.contacto_url }}" {{ if url === i18n.nav.contacto_url }}aria-current="page"{{ /if }}>{{ i18n.nav.contacto }}</a> -->
     </nav>
