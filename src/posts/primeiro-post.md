@@ -1,8 +1,8 @@
 ---
-title: Bem-vindo ao Uso Ritual, um titulo bem grande a duas linhas
+title: Bem-vinda ao Uso Ritual, estamos a trabalhar no desenvolvimento do site
 date: 2025-08-18
-slug: bem-vindo
-description: O blogue começa aqui.
+slug: bem-vinda
+description: De momento o conteúdo é fictício 🤓
 translationKey: welcome-post
 thumbnail: welcome-post/fillas.jpg
 ---

@@ -4,6 +4,7 @@
   z-index: 100;
   background: transparent;
   padding: var(--space-sm) var(--gutter);
+  font-family: var(--font-ui);
 }
 
 .site-header__inner {
@@ -40,7 +41,6 @@
 .lang-switcher {
   display: flex;
   gap: var(--space-lg);
-  font-family: var(--font-ui);
 }
 
 .lang-switcher__item {

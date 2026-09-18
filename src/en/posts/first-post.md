@@ -1,17 +1,17 @@
 ---
-title: Welcome to Uso Ritual
+title: Welcome to Uso Ritual — we're working on the site
 date: 2025-08-18
 slug: welcome
-description: The blog starts here.
+description: For now the content is fictional 🤓
 translationKey: welcome-post
-thumbnail: welcome-post/cover.svg
+thumbnail: welcome-post/fillas.jpg
 ---
 
 This is the first post on **Uso Ritual**.
 
 Here you'll find record reviews, interviews, and loose notes about music — mostly in Portuguese, sometimes in English, eventually in Basque.
 
-{{ "welcome-post/cover.svg" |> postImage("Album cover", "Recorded in Lisbon, 2025") }}
+{{ "welcome-post/fillas.jpg" |> postImage("Album cover", "Recorded in Lisbon, 2025") }}
 
 No metrics, no algorithm. Just music worth listening to.
 
@@ -27,4 +27,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id porta risus. C
 
 Vestibulum viverra tortor urna, sed consectetur nibh vehicula sed. Nunc et elit condimentum, molestie tortor id, dignissim turpis.
 
-{{ "welcome-post/estudio-1.svg|Studio session 1|Morning session" |> postGallery("welcome-post/estudio-2.svg|Studio session 2|Afternoon", "welcome-post/estudio-3.svg|Studio session 3|Late night") }}
+{{ "welcome-post/a-pedreira.jpg|Sessão de estúdio 1|Sessão de manhã" |> postGallery("welcome-post/Antia-Muino-Abe-Rabade.jpg|Sessão de estúdio 2|A tarde", "welcome-post/lontreira.jpg|Sessão de estúdio 3|Final de noite") }}
