@@ -1,6 +1,6 @@
 ---
 title: Welcome to Uso Ritual — we're working on the site
-date: 2025-08-18
+date: 2026-10-01
 slug: welcome
 description: For now the content is fictional 🤓
 translationKey: welcome-post

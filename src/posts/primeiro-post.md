@@ -1,6 +1,6 @@
 ---
 title: Bem-vinda ao Uso Ritual, estamos a trabalhar no desenvolvimento do site
-date: 2025-08-18
+date: 2026-10-01
 slug: bem-vinda
 description: De momento o conteúdo é fictício 🤓
 translationKey: welcome-post
