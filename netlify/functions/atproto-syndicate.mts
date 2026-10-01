@@ -94,7 +94,8 @@ async function getRecord(
     headers: { Authorization: `Bearer ${jwt}` },
     signal: AbortSignal.timeout(10_000),
   });
-  if (res.status === 404) return null;
+  // 404 = not found; 400 = Eurosky PDS rejects getRecord for unknown Lexicons (treat as not found)
+  if (res.status === 404 || res.status === 400) return null;
   if (!res.ok) throw new Error(`getRecord ${collection}/${rkey}: ${res.status}`);
   return await res.json();
 }
