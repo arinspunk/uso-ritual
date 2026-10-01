@@ -7,3 +7,13 @@
 
 # Sem redirects de deteção de idioma por Accept-Language (decisão de design).
 # A seleção de idioma é feita exclusivamente pelo utilizador.
+
+[[headers]]
+  for = "/.well-known/atproto-did"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+
+[[headers]]
+  for = "/.well-known/site.standard.publication"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"

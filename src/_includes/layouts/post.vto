@@ -13,4 +13,14 @@ layout: layouts/base.vto
     {{ content }}
   </div>
 
+  {{ if atprotoAnchor && atprotoRkey }}
+  <section
+    class="post-comments"
+    data-thread-uri="at://{{ atproto.did }}/app.bsky.feed.post/{{ atprotoRkey }}"
+    data-post-url="{{ atprotoRkey |> bskyPostUrl }}"
+    data-appview="{{ atproto.appview }}"
+  ></section>
+  <script src="/assets/js/atproto-comments.js" defer></script>
+  {{ /if }}
+
 </article>

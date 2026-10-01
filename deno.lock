@@ -2,6 +2,8 @@
   "version": "5",
   "specifiers": {
     "jsr:@davidbonnet/astring@1.8.6": "1.8.6",
+    "jsr:@libs/typing@2": "2.9.0",
+    "jsr:@std/assert@*": "1.0.19",
     "jsr:@std/cli@1.0.6": "1.0.6",
     "jsr:@std/cli@^1.0.6": "1.0.6",
     "jsr:@std/collections@^1.0.5": "1.3.0",
@@ -15,7 +17,9 @@
     "jsr:@std/fs@^1.0.4": "1.0.4",
     "jsr:@std/html@1.0.0": "1.0.0",
     "jsr:@std/http@1.0.7": "1.0.7",
+    "jsr:@std/internal@^1.0.12": "1.0.14",
     "jsr:@std/io@~0.224.9": "0.224.9",
+    "jsr:@std/json@1": "1.1.0",
     "jsr:@std/jsonc@1.0.1": "1.0.1",
     "jsr:@std/log@0.224.8": "0.224.8",
     "jsr:@std/media-types@^1.0.3": "1.1.0",
@@ -29,6 +33,7 @@
     "jsr:@std/yaml@1.0.5": "1.0.5",
     "jsr:@std/yaml@^1.0.5": "1.0.5",
     "npm:@js-temporal/polyfill@0.4.4": "0.4.4",
+    "npm:@netlify/functions@^6.0.1": "6.0.1",
     "npm:@types/estree@1.0.5": "1.0.5",
     "npm:date-fns@4.1.0": "4.1.0",
     "npm:estree-walker@3.0.3": "3.0.3",
@@ -39,12 +44,22 @@
     "npm:markdown-it@14.1.0": "14.1.0",
     "npm:meriyah@4.5.0": "4.5.0",
     "npm:napi-wasm@1.0.1": "1.0.1",
+    "npm:napi-wasm@^1.0.1": "1.0.1",
     "npm:sharp@0.33.5": "0.33.5",
     "npm:svg2png-wasm@1.4.1": "1.4.1"
   },
   "jsr": {
     "@davidbonnet/astring@1.8.6": {
       "integrity": "98b4914c8863cdf8c0ff83bb5c528caa67a8dca6020ad6234113499f00583e3a"
+    },
+    "@libs/typing@2.9.0": {
+      "integrity": "ddf35ea652b807cd9b19b4f3f163fb5d76d57299053753fbd01ba8b02d9306ad"
+    },
+    "@std/assert@1.0.19": {
+      "integrity": "eaada96ee120cb980bc47e040f82814d786fe8162ecc53c91d8df60b8755991e",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
     },
     "@std/cli@1.0.6": {
       "integrity": "d22d8b38c66c666d7ad1f2a66c5b122da1704f985d3c47f01129f05abb6c5d3d"
@@ -89,11 +104,20 @@
         "jsr:@std/streams"
       ]
     },
+    "@std/internal@1.0.14": {
+      "integrity": "291516b3d4c35024d6ffbc0a9df5bf4c64116e05b50012cf846710152d2ffdf7"
+    },
     "@std/io@0.224.9": {
       "integrity": "4414664b6926f665102e73c969cfda06d2c4c59bd5d0c603fd4f1b1c840d6ee3"
     },
+    "@std/json@1.1.0": {
+      "integrity": "93330d3ed4054d6b1ffe54b075432c80a5f671be77277b978931e018014cb1cc"
+    },
     "@std/jsonc@1.0.1": {
-      "integrity": "6b36956e2a7cbb08ca5ad7fbec72e661e6217c202f348496ea88747636710dda"
+      "integrity": "6b36956e2a7cbb08ca5ad7fbec72e661e6217c202f348496ea88747636710dda",
+      "dependencies": [
+        "jsr:@std/json"
+      ]
     },
     "@std/log@0.224.8": {
       "integrity": "8938225caf405cbf0a4871191fa3d55f2fabe3363f4235fdb20ebe2620ecda43",
@@ -262,6 +286,15 @@
         "jsbi",
         "tslib"
       ]
+    },
+    "@netlify/functions@6.0.1": {
+      "integrity": "sha512-QapLxXrSBxy+boLOAYUt7R47P5Zyn2XDMe16AaUHJILzAwTbAQIWy20ynXoLuh11JrsqX02qaKaj0/ppou3E/g==",
+      "dependencies": [
+        "@netlify/types"
+      ]
+    },
+    "@netlify/types@3.1.0": {
+      "integrity": "sha512-yuVTxsVcKZFzrsXh5aFoHtdi/2aj1RAOJCQteg6TfXgwLx0rR941QNev5eeuBP8eieBXfyfD/loeKOH4OFLJ7w=="
     },
     "@types/estree@1.0.5": {
       "integrity": "sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw=="
@@ -644,6 +677,7 @@
     "https://deno.land/x/vento@v1.12.10/src/loader.ts": "c05add67f582e937ee611852075ce2cc038b5e80e3e609eef96fa5ed74a5086c",
     "https://deno.land/x/vento@v1.12.10/src/tokenizer.ts": "e7830fbc644a3b30cf852d0685f9797e4826ad399a3e0277beebce577b54934c",
     "https://deno.land/x/vento@v1.12.10/src/transformer.ts": "587a0b107a2bd1437a3093c4c44c07e4fdf3abfaaf8e845767b69bd34a039154",
+    "https://deno.land/x/xml@5.4.16/_types.ts": "493c293e61bd2be051c377d4e6389d9f4e17403e70e4f0de25599b86265efc80",
     "https://deno.land/x/xml@5.4.16/mod.ts": "b59e5c0dd9fe7ed597c21c39aacf089aa82fe5c5eaad3f411a43a9c104359f4e",
     "https://deno.land/x/xml@5.4.16/parse.ts": "af704c72d42607d5b3f364972c413e05b6d2921d164806ec47aee348cf6ce49c",
     "https://deno.land/x/xml@5.4.16/stringify.ts": "a00881a1e563902538cfea8ce31464c81e98e61dddcf718039d7118b46464687",
@@ -652,6 +686,12 @@
   "workspace": {
     "dependencies": [
       "npm:napi-wasm@1.0.1"
-    ]
+    ],
+    "packageJson": {
+      "dependencies": [
+        "npm:@netlify/functions@^6.0.1",
+        "npm:napi-wasm@^1.0.1"
+      ]
+    }
   }
 }

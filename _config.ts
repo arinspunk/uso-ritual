@@ -6,6 +6,7 @@ import transformImages from "lume/plugins/transform_images.ts";
 // Pin npm:napi-wasm so LightningCSS resolves on Netlify (Deno does not hoist nested deps).
 import "napi-wasm";
 import lightningCss from "lume/plugins/lightningcss.ts";
+import { atprotoTid } from "./src/_lib/atproto-tid.ts";
 import {
   renderPostAudio,
   renderPostGallery,
@@ -17,20 +18,37 @@ import {
 
 const site = lume({
   src: "./src",
-  // Atualiza este URL com o domínio definitivo antes do primeiro deploy
-  location: new URL("https://uso-ritual.netlify.app"),
+  location: new URL("https://usoritual.com"),
 });
 
 // Corre ANTES do multilanguage plugin:
 // 1. Define URL a partir do slug para posts (plugin aplica /en/ a EN depois)
 // 2. Mapeia translationKey → id para o plugin construir os alternates
-site.preprocess([".md"], (pages) => {
+// 3. Calcula o rkey AT Protocol para posts (determinista: slug + lang + date)
+site.preprocess([".md"], async (pages) => {
   for (const page of pages) {
     if (page.data.type === "post" && page.data.slug) {
       page.data.url = `/${page.data.slug}/`;
     }
     if (page.data.translationKey && !page.data.id) {
       page.data.id = page.data.translationKey;
+    }
+    if (
+      page.data.type === "post" &&
+      page.data.slug &&
+      page.data.lang &&
+      page.data.date
+    ) {
+      page.data.atprotoRkey = await atprotoTid(
+        page.data.slug,
+        page.data.lang,
+        page.data.date,
+      );
+      const anchorSince = page.data.atproto?.anchorSince
+        ? new Date(page.data.atproto.anchorSince as string)
+        : new Date("2099-01-01");
+      page.data.atprotoAnchor =
+        new Date(page.data.date as Date) >= anchorSince;
     }
   }
 });
@@ -86,6 +104,16 @@ site.filter("formatDate", (value: Date, lang: string) => {
   }).format(value);
 });
 
+// ─── AT Protocol helpers ───
+const ATPROTO_DID = "did:plc:t3q3ylsnsser3o74xz42sdqk";
+
+site.filter("atprotoDocUri", (rkey: string) =>
+  `at://${ATPROTO_DID}/site.standard.document/${rkey}`);
+site.filter("atprotoPostUri", (rkey: string) =>
+  `at://${ATPROTO_DID}/app.bsky.feed.post/${rkey}`);
+site.filter("bskyPostUrl", (rkey: string) =>
+  `https://bsky.app/profile/${ATPROTO_DID}/post/${rkey}`);
+
 // ─── Shortcodes de media para posts ───
 // Locked author syntax (Vento filters — multi-arg tags are not parseable):
 //   {{ "src" |> postImage("alt", "caption?", "wide|full|text?") }}
@@ -106,6 +134,7 @@ site.filter("postQuote", renderPostQuote);
 site.use(lightningCss());
 site.copy("assets/fonts");
 site.copy("assets/js");
+site.copy(".well-known");
 site.loadAssets([".svg"]);
 site.use(transformImages());
 

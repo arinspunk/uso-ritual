@@ -12,6 +12,10 @@
   {{ for alt of (alternates || []) }}
     <link rel="alternate" hreflang="{{ alt.lang }}" href="{{ alt.url }}">
   {{ /for }}
+  <link rel="site.standard.publication" href="at://{{ atproto.did }}/site.standard.publication/{{ atproto.publication.rkey }}">
+  {{ if atprotoRkey }}
+  <link rel="site.standard.document" href="at://{{ atproto.did }}/site.standard.document/{{ atprotoRkey }}">
+  {{ /if }}
 </head>
 <body>
   {{ include "partials/header.vto" }}
