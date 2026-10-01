@@ -1,5 +1,5 @@
 ---
-title: Bem-vinda ao Uso Ritual, estamos a trabalhar no desenvolvimento do site
+title: Bem-vinda ao Uso Ritual — estamos a trabalhar no site
 date: 2026-10-01
 slug: bem-vinda
 description: De momento o conteúdo é fictício 🤓
