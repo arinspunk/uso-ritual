@@ -50,3 +50,26 @@
   border-top: 1px solid var(--color-border);
   font-family: var(--font-ui);
 }
+
+.post-comments {
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(0, 1fr)
+    [wide-start] minmax(0, 12ch)
+    [text-start] min(48ch, 100%)
+    [text-end]   minmax(0, 12ch)
+    [wide-end]   1fr
+    [full-end];
+  width: 100%;
+  text-align: left;
+  hyphens: none;
+  margin-top: calc(var(--baseline) * 3);
+
+  & > * {
+    grid-column: text-start / text-end;
+  }
+
+  a {
+    color: inherit;
+  }
+}

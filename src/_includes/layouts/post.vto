@@ -15,7 +15,7 @@ layout: layouts/base.vto
 
   {{ if atprotoAnchor && atprotoRkey }}
   <section
-    class="post-comments"
+    class="post-comments atproto-comments"
     data-thread-uri="at://{{ atproto.did }}/app.bsky.feed.post/{{ atprotoRkey }}"
     data-post-url="{{ atprotoRkey |> bskyPostUrl }}"
     data-appview="{{ atproto.appview }}"

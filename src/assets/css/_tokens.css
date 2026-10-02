@@ -43,8 +43,17 @@
   --cy-80: color-mix(in srgb, var(--cy-0) 20%, white);
   --cy-90: color-mix(in srgb, var(--cy-0) 10%, white);
 
-  /* Dull Violet Black — base + sombras hacia negro (cambiar solo --dvb-0) */
+  /* Dull Violet Black — base + tintes hacia blanco + sombras hacia negro (cambiar solo --dvb-0) */
   --dvb-0:  #2e0e3f;
+  --dvb-tint-10: color-mix(in srgb, var(--dvb-0) 90%, white);
+  --dvb-tint-20: color-mix(in srgb, var(--dvb-0) 80%, white);
+  --dvb-tint-30: color-mix(in srgb, var(--dvb-0) 70%, white);
+  --dvb-tint-40: color-mix(in srgb, var(--dvb-0) 60%, white);
+  --dvb-tint-50: color-mix(in srgb, var(--dvb-0) 50%, white);
+  --dvb-tint-60: color-mix(in srgb, var(--dvb-0) 40%, white);
+  --dvb-tint-70: color-mix(in srgb, var(--dvb-0) 30%, white);
+  --dvb-tint-80: color-mix(in srgb, var(--dvb-0) 20%, white);
+  --dvb-tint-90: color-mix(in srgb, var(--dvb-0) 10%, white);
   --dvb-10: color-mix(in srgb, var(--dvb-0) 90%, black);
   --dvb-20: color-mix(in srgb, var(--dvb-0) 80%, black);
   --dvb-30: color-mix(in srgb, var(--dvb-0) 70%, black);
@@ -61,6 +70,7 @@
   --color-surface:    var(--cy-60);
   --color-border:     var(--cy-60);
   --color-text:       var(--dvb-0);
+  --color-text-light:  var(--dvb-tint-40);
   --color-text-muted: color-mix(in srgb, var(--dvb-0) 70%, var(--cy-80));
   --color-accent:     var(--wada-pink);
 

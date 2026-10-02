@@ -19,7 +19,7 @@
 - [x] 2.2 Generar `/.well-known/site.standard.publication` desde `_data` (página de Lume con `url` explícita) con el AT URI de la publicación.
 - [x] 2.3 Añadir en `netlify.toml` cabeceras `Content-Type: text/plain; charset=utf-8` para `/.well-known/atproto-did` y `/.well-known/site.standard.publication`.
 - [x] 2.4 Añadir `<link rel="site.standard.publication">` al layout base y `<link rel="site.standard.document">` al layout de post (`src/_includes/layouts/post.vto`).
-- [ ] 2.5 Tras el deploy, comprobar con `curl -i` que ambos endpoints responden 200, `text/plain` y el valor correcto, sin redirecciones.
+- [x] 2.5 Tras el deploy, comprobar con `curl -i` que ambos endpoints responden 200, `text/plain` y el valor correcto, sin redirecciones.
 
 ## 3. Manifiesto
 
@@ -41,8 +41,8 @@
 - [x] 4.8 Construir el documento deseado (con `bskyPostRef` si hay ancla), compararlo con `getRecord` en los campos gestionados y hacer `putRecord` solo si difiere.
 - [x] 4.9 Capturar errores por entrada (registrar y continuar) y emitir al final un resumen: creados, actualizados, sin cambios y errores.
 - [x] 4.10 Implementar `ATPROTO_DRY_RUN=true` (registra las escrituras previstas sin ejecutarlas).
-- [ ] 4.11 Añadir `ATPROTO_APP_PASSWORD` en Netlify con scope Functions (no Builds).
-- [ ] 4.12 Probar localmente con `netlify dev` y un evento simulado, primero en dry run.
+- [x] 4.11 Añadir `ATPROTO_APP_PASSWORD` en Netlify con scope Functions (no Builds).
+- [x] 4.12 Probar localmente con `netlify dev` y un evento simulado, primero en dry run.
 
 ## 5. Bloque de comentarios
 
@@ -57,10 +57,10 @@
 ## 6. Despliegue por fases y validación
 
 - [x] 6.0 Precondición: eliminar o marcar como borrador el contenido de ejemplo (posts de bienvenida con texto ficticio) y confirmar que el manifiesto solo contiene posts reales. No continuar hasta cumplirla.
-- [ ] 6.1 Desplegar con `anchorSince` en el futuro. Comprobar en los logs que la función se ejecuta y en el PDS (`com.atproto.repo.listRecords` o pdsls.dev) que existen la publicación y un documento por post e idioma, sin posts ancla.
-- [ ] 6.2 Hacer un segundo deploy sin cambios y comprobar que el resumen indica cero escrituras.
-- [ ] 6.3 Abrir un deploy preview y comprobar que la función no escribe.
-- [ ] 6.4 Fijar `anchorSince` en la fecha deseada y desplegar. Comprobar en `bsky.app` que los posts ancla aparecen con tarjeta de enlace y sin indicador de retrofechado, y que los documentos tienen `bskyPostRef`.
-- [ ] 6.5 Responder a un post ancla desde Bluesky y desde Mu y comprobar que ambos replies aparecen en el blog.
-- [ ] 6.6 Modificar el título de un post, desplegar y comprobar que se actualiza el documento y no el post ancla.
-- [ ] 6.7 (Opcional) Cambiar el handle de la cuenta al dominio desde los ajustes de la app y comprobar que se resuelve y que los enlaces del blog siguen funcionando.
+- [x] 6.1 Desplegar con `anchorSince` en el futuro. Comprobar en los logs que la función se ejecuta y en el PDS (`com.atproto.repo.listRecords` o pdsls.dev) que existen la publicación y un documento por post e idioma, sin posts ancla.
+- [x] 6.2 Hacer un segundo deploy sin cambios y comprobar que el resumen indica cero escrituras.
+- [x] 6.3 Abrir un deploy preview y comprobar que la función no escribe.
+- [x] 6.4 Fijar `anchorSince` en la fecha deseada y desplegar. Comprobar en `bsky.app` que los posts ancla aparecen con tarjeta de enlace y sin indicador de retrofechado, y que los documentos tienen `bskyPostRef`.
+- [x] 6.5 Responder a un post ancla desde Bluesky y desde Mu y comprobar que ambos replies aparecen en el blog.
+- [x] 6.6 Modificar el título de un post, desplegar y comprobar que se actualiza el documento y no el post ancla.
+- [x] 6.7 (Opcional) Cambiar el handle de la cuenta al dominio desde los ajustes de la app y comprobar que se resuelve y que los enlaces del blog siguen funcionando.
