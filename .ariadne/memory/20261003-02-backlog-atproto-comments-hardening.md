@@ -23,6 +23,7 @@
 > **Done when:** `rg 'lang === "pt"' src/assets/js/atproto-comments.js` → 0 resultados y `deno task build` → sin errores.
 > **Date completed:** 2026-10-03
 > **Work done:** Añadidos `I18N` (pt/en) y `t(key, vars)` con `replaceAll` para `{name}`; eliminados todos los ternarios `lang === "pt"`.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[1.2]** ✅ Validar `appview` y valor por defecto
 > **What to do:** El script usa `https://public.api.bsky.app` si `data-appview` falta o está vacío, y elimina la barra final.
@@ -33,6 +34,7 @@
 > **Done when:** En el navegador, con `data-appview` borrado desde DevTools y recarga forzada del script, la petición va a `https://public.api.bsky.app/xrpc/...` (pestaña Network).
 > **Date completed:** 2026-10-03
 > **Work done:** `DEFAULT_APPVIEW` + normalización con `.replace(/\/+$/, "")`.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[1.3]** ✅ Validar fechas inválidas
 > **What to do:** Una fecha ausente o inválida no produce "NaN" ni `·` en la cabecera del comentario.
@@ -43,6 +45,7 @@
 > **Done when:** Ejecutar en consola `formatRelativeTime("")` desde una copia aislada devuelve `""`; y un comentario con `createdAt` vacío (probado mutando `record.createdAt` en un fixture local) no renderiza `<time>`.
 > **Date completed:** 2026-10-03
 > **Work done:** `isValidDate`; early return en formatters; `<time>` condicional en `renderReply`.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[1.4]** ✅ Validar el dominio personalizado
 > **What to do:** El input "Otra app" solo acepta hostnames válidos y marca error si no lo son.
@@ -53,6 +56,7 @@
 > **Done when:** Introducir `mi app` o `foo/bar` → el input queda con `aria-invalid="true"` y no se abre pestaña; introducir `https://mu.social/` → abre `https://mu.social/profile/...`.
 > **Date completed:** 2026-10-03
 > **Work done:** `normalizeDomain` + `aria-invalid` en `openCustom`; guarda hostname normalizado.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 ---
 
@@ -67,6 +71,7 @@
 > **Done when:** Prueba manual con record sintético `{text:"hola mundo", facets:[{index:{byteStart:0,byteEnd:4},features:[link]},{index:{byteStart:2,byteEnd:6},features:[link]}]}` produce el texto "hola mundo" sin repeticiones.
 > **Date completed:** 2026-10-03
 > **Work done:** Skip de facets solapados/inválidos en el bucle de `buildFacetedText`.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[2.2]** ✅ Soporte de menciones y hashtags
 > **What to do:** Los facets `#mention` y `#tag` se renderizan como enlaces a bsky.app.
@@ -77,6 +82,7 @@
 > **Done when:** Un comentario real con `@usuario` y `#tag` muestra ambos como enlaces con `href` correcto (inspección en DevTools).
 > **Date completed:** 2026-10-03
 > **Work done:** Recolección de `#mention` y `#tag` en `buildFacetedText` con mismos attrs de enlace.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[2.3]** ✅ Extraer `sortedReplies` y simplificar `hiddenRkeys`
 > **What to do:** El filtrado/orden de respuestas vive en una sola función y la comparación de ocultos usa URIs completas.
@@ -87,6 +93,7 @@
 > **Done when:** `rg "threadViewPost" src/assets/js/atproto-comments.js` muestra el filtro solo en `sortedReplies` y en `renderReply` (comprobación de tipo de la vista); `deno task build` → OK; el hilo real sigue renderizando el mismo número de comentarios.
 > **Date completed:** 2026-10-03
 > **Work done:** `sortedReplies` + `hiddenUris`; filtro `threadViewPost` solo en `sortedReplies` y guard de tipo en `renderReply`.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 ---
 
@@ -101,6 +108,7 @@
 > **Done when:** Elegir "Deer" en un popover y abrir el de otro comentario → "Deer" aparece marcado sin recargar.
 > **Date completed:** 2026-10-03
 > **Work done:** Sync de `--active` e input custom en `toggle` open de `buildAppAction`.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[3.2]** ✅ Posicionamiento robusto del popover
 > **What to do:** El popover se voltea hacia arriba si no cabe debajo y se cierra al hacer scroll o resize.
@@ -111,6 +119,7 @@
 > **Done when:** Abrir el popover del último comentario en una ventana baja → se muestra por encima del botón; al hacer scroll se cierra.
 > **Date completed:** 2026-10-03
 > **Work done:** Flip vertical + listeners pasivos `scroll`/`resize` con cleanup en close.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[3.3]** ✅ Fallback sin Popover API
 > **What to do:** Si el navegador no soporta `popover`, el botón es un enlace directo al post en bsky.app.
@@ -121,6 +130,7 @@
 > **Done when:** Forzando `SUPPORTS_POPOVER = false` temporalmente, los botones son `<a>` con `href` correcto (inspección DevTools); revertir el forzado.
 > **Date completed:** 2026-10-03
 > **Work done:** `SUPPORTS_POPOVER` + early return con `<a>` en `buildAppAction`.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 ---
 
@@ -135,6 +145,7 @@
 > **Done when:** Inspección DevTools → botones de respuesta con `aria-label="Responder a <nombre>"` y `aria-haspopup="true"`; el contenedor de error con `role="status"`.
 > **Date completed:** 2026-10-03
 > **Work done:** `aria-haspopup`, `ariaLabel` en button/action; `role="status"` en error; `replyTo` en replies.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[4.2]** ✅ Mover el `·` del tiempo a CSS
 > **What to do:** El separador visual `·` se genera por CSS y no forma parte del texto de `<time>`.
@@ -145,6 +156,7 @@
 > **Done when:** Visualmente la cabecera sigue mostrando "Nombre @handle · 3 h" y `time.textContent` en DevTools no incluye `·`.
 > **Date completed:** 2026-10-03
 > **Work done:** Eliminado `"· "` del JS; añadido `::before` en `_atproto-comments.css`.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[4.3]** ✅ Enlace "Ver más en Bluesky" para hilos truncados
 > **What to do:** Si una respuesta tiene más hijos que los cargados, se muestra un enlace al post original.
@@ -155,6 +167,7 @@
 > **Done when:** Un comentario con `replyCount` mayor que sus respuestas visibles muestra el enlace con `href` correcto; uno sin truncado, no.
 > **Date completed:** 2026-10-03
 > **Work done:** `MAX_DEPTH` en `load`; enlace `.atproto-reply__more` + estilos con tokens.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[4.4]** ✅ Organizar el archivo en bloques
 > **What to do:** Reordenar las funciones del IIFE en cuatro bloques claramente delimitados, sin cambiar su comportamiento ni convertirlas en clase.
@@ -165,6 +178,7 @@
 > **Done when:** `deno task build` → OK, el hilo de comentarios se renderiza igual que antes y los cuatro comentarios de sección aparecen en orden (`rg "^  // --- " src/assets/js/atproto-comments.js` → 4 resultados).
 > **Date completed:** 2026-10-03
 > **Work done:** IIFE reordenado en 4 bloques con los comentarios de sección indicados.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 **[4.5]** ✅ Limpieza de comentarios y verificación final
 > **What to do:** Eliminar ruido y validar el resultado en ambos idiomas.
@@ -175,6 +189,7 @@
 > **Done when:** `rg "Task \d" src/assets/js/atproto-comments.js` → 0 resultados, `deno task build` → OK y la revisión manual de los 4 escenarios no muestra errores en consola.
 > **Date completed:** 2026-10-03
 > **Work done:** Eliminados comentarios `Task X.Y`; `deno task build` OK; checks `rg` (i18n ternarios, Task, secciones) OK. Revisión manual de escenarios en navegador pendiente del usuario.
+> **Commit:** `7dc75c6` refactor(atproto): harden comments script for i18n, validation and a11y
 
 ---
 
