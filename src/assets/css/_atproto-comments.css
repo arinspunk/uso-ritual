@@ -55,16 +55,6 @@
   position: relative;
 }
 
-.atproto-reply__replies > li:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  left: 16px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--color-border);
-}
-
 /* Hide thread-line tail on the last reply at each nesting level.
    The :not(:has()) guard keeps the connector when the last item itself has sub-replies. */
 .atproto-reply__item--last > .atproto-reply:not(:has(> .atproto-reply__replies)) > .atproto-reply__avatar-wrap::after {
@@ -85,9 +75,10 @@
 .atproto-reply__avatar--placeholder {
   width: 32px;
   height: 32px;
+  padding-top: 5px;
   border-radius: 50%;
-  background: var(--color-accent);
-  color: var(--color-text);
+  background: var(--wada-blue);
+  color: white;
   font-family: var(--font-ui);
   font-size: var(--font-size-small);
   font-weight: bold;
@@ -125,6 +116,18 @@
 }
 
 .atproto-reply__time {
+  color: var(--color-text-muted);
+}
+
+.atproto-reply__time::before {
+  content: "· ";
+}
+
+.atproto-reply__more {
+  display: inline-block;
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
   color: var(--color-text-muted);
 }
 
