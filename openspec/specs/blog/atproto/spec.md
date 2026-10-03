@@ -163,7 +163,7 @@ Cada página de post con post ancla SHALL mostrar un bloque que carga client-sid
 
 El bloque SHALL renderizar cada reply con marcado semántico: la lista raíz y las listas de sub-replies SHALL ser elementos `<ol>`, cada reply SHALL ser un elemento `<article>` dentro de un `<li>`, y los metadatos del autor SHALL estar dentro de un elemento `<header>`. El DOM generado SHALL NOT contener atributos `style` inline para la indentación.
 
-Cada reply SHALL mostrar el avatar del autor como un elemento `<img>` con el atributo `loading="lazy"`. Cuando el autor no tenga avatar, el bloque SHALL mostrar un elemento placeholder con las iniciales del `displayName` (primera letra de cada palabra, máximo dos, usando iterador de grafemas), con fondo `--color-accent` y color de texto `--color-text`. Si `displayName` está vacío o ausente, SHALL usarse la primera letra del `handle`.
+Cada reply SHALL mostrar el avatar del autor como un elemento `<img>` con el atributo `loading="lazy"`. Cuando el autor no tenga avatar, el bloque SHALL mostrar un elemento placeholder con las iniciales del `displayName` (primera letra de cada palabra, máximo dos, usando iterador de grafemas), con fondo `--atproto-avatar-bg` y color de texto `--atproto-avatar-color`. Si `displayName` está vacío o ausente, SHALL usarse la primera letra del `handle`.
 
 La fecha de cada reply SHALL mostrarse como tiempo relativo compacto según la tabla siguiente, usando el idioma del documento (`document.documentElement.lang`):
 
@@ -178,6 +178,8 @@ La fecha de cada reply SHALL mostrarse como tiempo relativo compacto según la t
 
 El elemento `<time>` SHALL mantener el atributo `datetime` con la fecha ISO original y SHALL incluir el atributo `title` con la fecha absoluta formateada según el locale del documento.
 
+El bloque SHALL implementarse mediante el custom element `<atproto-comments>` del paquete `@arinspunk/atproto-comments`. El template del post SHALL incluir el elemento con el atributo `thread-uri` calculado a partir del DID y el rkey del post ancla. El CSS del site SHALL mapear sus design tokens a las variables `--atproto-*` del paquete para mantener coherencia visual.
+
 #### Scenario: Post con replies
 
 - **WHEN** un visitante abre la página de un post cuyo post ancla tiene replies
@@ -191,7 +193,7 @@ El elemento `<time>` SHALL mantener el atributo `datetime` con la fecha ISO orig
 #### Scenario: Avatar ausente
 
 - **WHEN** el autor de un reply no tiene `author.avatar`
-- **THEN** el reply muestra un placeholder con las iniciales del `displayName` con fondo `--color-accent` y texto `--color-text`
+- **THEN** el reply muestra un placeholder con las iniciales del `displayName` con fondo `--atproto-avatar-bg` y texto `--atproto-avatar-color`
 
 #### Scenario: Iniciales de displayName multipalabra
 
