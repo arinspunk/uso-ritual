@@ -1,240 +1,32 @@
-/* AT Protocol comments — styles for .atproto-comments__* (JS-rendered) */
+/* atproto-comments token mapping
+   Maps uso-ritual design tokens → --atproto-* variables.
+   The component's base styles come from the CDN stylesheet. */
 
-/* Tasks 2.1 — lists: no bullets, no indent */
-.atproto-comments__list,
-.atproto-reply__replies {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+atproto-comments {
+  --atproto-font-family: var(--font-ui);
+  --atproto-font-size: 1rem;
+  --atproto-color-text: var(--color-text);
+  --atproto-color-muted: var(--color-text-muted);
+  --atproto-color-border: var(--cy-80);
+  --atproto-color-surface: var(--color-surface, oklch(97% 0 0));
+  --atproto-avatar-bg: var(--wada-blue);
+  --atproto-avatar-color: white;
 }
 
-.atproto-comments__error {
-  margin: 0;
-  font-family: var(--font-ui);
-  font-size: var(--font-size-small);
-  color: var(--color-text-muted);
-}
-
-/* Task 2.2 — reply: grid layout
-   col 1 = avatar-wrap (32px), col 2 = content (1fr)
-   row 1 = main content, row 2 = nested replies (spans full width)
-   avatar-wrap spans both rows so the thread line reaches the child avatars */
-.atproto-reply {
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  column-gap: var(--space-sm);
-  font-family: var(--font-ui);
+.atproto-reply__content {
+  margin: 0 0 var(--baseline);
   line-height: var(--baseline);
 }
-
-/* Task 2.4 — avatar column (row 1 only); line extends to bottom of content row */
-.atproto-reply__avatar-wrap {
-  grid-column: 1;
-  grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-
-/* Thread line on parent: from avatar-bottom to bottom of content row */
-.atproto-reply:has(> .atproto-reply__replies) .atproto-reply__avatar-wrap::after {
-  content: '';
-  flex: 1;
-  width: 2px;
-  background: var(--cy-80);
-  position: absolute;
-  top: 32px;
-  bottom: 0;
-}
-
-/* Each child li draws a vertical connector at the avatar's x-position.
-   Non-last: full height so it connects to the next sibling's line.
-   Last: stops at avatar center — no tail below. */
-.atproto-reply__replies > li {
-  position: relative;
-}
-
-/* Hide thread-line tail on the last reply at each nesting level.
-   The :not(:has()) guard keeps the connector when the last item itself has sub-replies. */
-.atproto-reply__item--last > .atproto-reply:not(:has(> .atproto-reply__replies)) > .atproto-reply__avatar-wrap::after {
-  display: none;
-}
-
-/* Task 3.5 — avatar image */
-.atproto-reply__avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  flex-shrink: 0;
-}
-
-/* Task 3.6 — avatar placeholder */
-.atproto-reply__avatar--placeholder {
-  width: 32px;
-  height: 32px;
-  padding-top: 5px;
-  border-radius: 50%;
-  background: var(--wada-blue);
-  color: white;
-  font-family: var(--font-ui);
-  font-size: var(--font-size-small);
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  user-select: none;
-  flex-shrink: 0;
-}
-
-/* Task 2.3 — content column */
-.atproto-reply__content {
-  grid-column: 2;
-  grid-row: 1;
-  min-width: 0;
-  margin-bottom: var(--baseline);
-}
-
-/* Replies span the full grid width → child avatars align with parent avatar */
-.atproto-reply__replies {
-  grid-column: 1 / -1;
-  grid-row: 2;
-}
-
-.atproto-reply__header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0 var(--space-xs);
-}
-
-.atproto-reply__handle {
-  color: var(--color-text-muted);
-}
-
-.atproto-reply__time {
-  color: var(--color-text-muted);
-}
-
-.atproto-reply__time::before {
-  content: "· ";
-}
-
-.atproto-reply__more {
-  display: inline-block;
-  margin-top: var(--space-xs);
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-small);
-  color: var(--color-text-muted);
-}
-
 .atproto-reply__text {
   font-family: var(--font-body);
-  margin-bottom: 0;
+  margin: 0;
 }
-
-/* Task 4.8 — app action (button + popover wrapper) */
 .atproto-app-action {
-  position: relative;
+  margin: 0;
 }
-
 .atproto-app-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-ui);
   font-size: var(--font-size-small);
-  color: var(--color-text-muted);
-  padding: 0;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  transition: color 0.15s, text-decoration-color 0.15s;
 }
-
-.atproto-app-btn:hover {
-  color: var(--color-text);
-  text-decoration-color: currentColor;
-}
-
 .atproto-app-btn--xl {
   font-size: 1rem;
-}
-
-/* Popover — hidden by UA default ([popover] → display:none).
-   display:flex only when open, so it doesn't override the UA hidden state. */
-.atproto-app-popover {
-  margin: auto; /* restore UA default overridden by the site's * { margin: 0 } reset */
-  border: 1px solid var(--color-border);
-  border-radius: 0.5em;
-  background: var(--color-bg);
-  padding: var(--space-xs);
-  min-width: 160px;
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-text) 12%, transparent);
-}
-
-.atproto-app-popover:popover-open {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.atproto-app-popover__link {
-  display: block;
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: 0.25em;
-  color: var(--color-text);
-  text-decoration: none;
-  font-family: var(--font-ui);
-  font-size: var(--font-size-small);
-}
-
-.atproto-app-popover__link:hover,
-.atproto-app-popover__link--active {
-  background: var(--color-surface);
-}
-
-.atproto-app-popover__separator {
-  font-family: var(--font-ui);
-  font-size: var(--font-size-small);
-  color: var(--color-text-muted);
-  padding: var(--space-xs) var(--space-sm) 0;
-  border-top: 1px solid var(--color-border);
-  margin-top: var(--space-xs);
-}
-
-.atproto-app-popover__custom {
-  display: flex;
-  gap: var(--space-xs);
-  padding: 0 var(--space-xs);
-}
-
-.atproto-app-popover__input {
-  flex: 1;
-  font-family: var(--font-ui);
-  font-size: var(--font-size-small);
-  border: 1px solid var(--color-border);
-  border-radius: 0.25em;
-  padding: var(--space-xs);
-  background: var(--color-bg);
-  color: var(--color-text);
-  min-width: 0;
-}
-
-.atproto-app-popover__go {
-  background: none;
-  border: 1px solid var(--color-border);
-  border-radius: 0.25em;
-  cursor: pointer;
-  font-family: var(--font-ui);
-  font-size: var(--font-size-small);
-  color: var(--color-text);
-  padding: var(--space-xs);
-  line-height: 1;
-}
-
-.atproto-app-popover__go:hover {
-  background: var(--color-surface);
 }

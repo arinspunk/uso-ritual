@@ -7,6 +7,9 @@
   <meta name="description" content="{{ description || '' }}">
   <link rel="preload" href="/assets/fonts/novela-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/IsaacRegular.woff2" as="font" type="font/woff2" crossorigin>
+  {{ if atprotoAnchor && atprotoRkey }}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/atproto-comments@1/dist/atproto-comments.css">
+  {{ /if }}
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="alternate" type="application/rss+xml" title="{{ i18n.feed_title }}" href="/{{ lang }}/feed.xml">
   {{ for alt of (alternates || []) }}
